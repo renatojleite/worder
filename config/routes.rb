@@ -1,10 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
-
+  root to: 'pages#home'
   # USER
-  namespace :user do
-    resources :work_orders, only: [:index, :show, :update]
-  end
+  resources :work_orders, only: [:index, :show, :update]
 
   # ADMIN
   # namespace
