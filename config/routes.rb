@@ -1,19 +1,8 @@
 Rails.application.routes.draw do
-  namespace :manager do
-    get 'team_leaders/index'
-    get 'team_leaders/new'
-    get 'team_leaders/create'
-    get 'team_leaders/show'
-    get 'team_leaders/edit'
-    get 'team_leaders/update'
-    get 'team_leaders/delete'
-  end
   devise_for :users
-
+  root to: 'pages#home'
   # USER
-  namespace :user do
-    resources :work_orders, only: [:index, :show, :update]
-  end
+  resources :work_orders, only: [:index, :show, :update]
 
   # ADMIN
   # namespace

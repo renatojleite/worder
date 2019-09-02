@@ -10,10 +10,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_02_181316) do
+ActiveRecord::Schema.define(version: 2019_09_02_193230) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string "category_name"
+    t.bigint "work_order_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["work_order_id"], name: "index_categories_on_work_order_id"
+  end
+
+  create_table "managers", force: :cascade do |t|
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_managers_on_user_id"
+  end
+
+  create_table "statuses", force: :cascade do |t|
+    t.string "status_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "team_leaders", force: :cascade do |t|
+    t.string "team_name"
+    t.bigint "user_id"
+    t.bigint "manager_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["manager_id"], name: "index_team_leaders_on_manager_id"
+    t.index ["user_id"], name: "index_team_leaders_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,4 +58,27 @@ ActiveRecord::Schema.define(version: 2019_09_02_181316) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "work_orders", force: :cascade do |t|
+    t.integer "priority"
+    t.string "address"
+    t.datetime "due_date"
+    t.datetime "due_time"
+    t.text "description"
+    t.datetime "completion_date"
+    t.string "start_photo"
+    t.string "end_photo"
+    t.bigint "team_leader_id"
+    t.bigint "status_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["status_id"], name: "index_work_orders_on_status_id"
+    t.index ["team_leader_id"], name: "index_work_orders_on_team_leader_id"
+  end
+
+  add_foreign_key "categories", "work_orders"
+  add_foreign_key "managers", "users"
+  add_foreign_key "team_leaders", "managers"
+  add_foreign_key "team_leaders", "users"
+  add_foreign_key "work_orders", "statuses"
+  add_foreign_key "work_orders", "team_leaders"
 end
