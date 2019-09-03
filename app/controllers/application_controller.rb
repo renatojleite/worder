@@ -8,5 +8,6 @@ class ApplicationController < ActionController::Base
       manager_work_orders_path
     end
   end
+
 end
 

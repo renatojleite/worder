@@ -7,13 +7,18 @@ class Manager::TeamLeadersController < ApplicationController
 
   def new
     @team_leader = TeamLeader.new
+
   end
 
   def create
+    # passar ID do manager?
+    # mostrar lista de usuários para selecionar um e atribuir ao Team.
+    # Não está salvando novo TEAM
+
     @team_leader = TeamLeader.new(team_leader_params)
-    @team_leader.user = current_user
+    @team_leader.manager = current_user.manager
     if @team_leader.save
-      redirect_to user_team_leaders_path
+      redirect_to manager_team_leaders_path
     else
       render 'new'
     end
