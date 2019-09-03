@@ -1,6 +1,5 @@
-
 <h1>Looooooooool</h1>
-<% @work_orders.each do |work_order| %>
-  <%= work_order %>
+<% @work_orders.each do |manager_work_order| %>
+  <%= link_to manager_work_order, manager_work_order_path(manager_work_order) %>
 <% end %>
 
