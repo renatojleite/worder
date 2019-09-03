@@ -23,7 +23,7 @@ puts "Creating work order"
 
 WorkOrder.create!(team_leader: team_leader)
 
-puts "Work order created!!
+puts "Work order created!!"
 
 puts "Users created: #{User.count}"
 puts "Manager created: #{Manager.count}"
