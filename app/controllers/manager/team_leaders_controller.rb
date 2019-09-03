@@ -1,4 +1,5 @@
 class Manager::TeamLeadersController < ApplicationController
+  before_action :set_team_leader, only: %i[show edit update delete]
 
   def index
     @team_leaders = TeamLeader.all
@@ -36,7 +37,7 @@ class Manager::TeamLeadersController < ApplicationController
 
   private
 
-  def set_work_order
+  def set_team_leader
     @team_leader = TeamLeader.find(params[:id])
   end
 
