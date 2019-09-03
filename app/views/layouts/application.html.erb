@@ -18,3 +18,5 @@
     <%= javascript_pack_tag 'application' %>
   </body>
 </html>
+
+<%= link_to "Log out", destroy_user_session_path, method: :delete %>

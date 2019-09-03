@@ -26,9 +26,13 @@ class Manager::WorkOrdersController < ApplicationController
   end
 
   def update
+    @work_order.update(work_order_params)
+    redirect_to work_order_path(@work_order)
   end
 
-  def delete
+  def destroy
+    @work_order.destroy
+    redirect_to work_orders_path
   end
 
   private
