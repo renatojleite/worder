@@ -55,14 +55,28 @@
                   <i class="fas fa-align-left"></i>
                   <span>Toggle Sidebar</span>
               </button>
+
+
+
           </div>
+
       </nav>
+
+      <h1>WO-index</h1>
+
+
+      <%= link_to "Criar Order", new_manager_work_order_path %>
+
+
+      <% @work_orders.each do |manager_work_order| %>
+      <ul>
+        <li>
+       <%= link_to manager_work_order.name, manager_work_order_path(manager_work_order) %></li>
+      </ul>
+      <% end %>
+
   </div>
 </div>
 
-<h1>Looooooooool</h1>
-<% @work_orders.each do |manager_work_order| %>
-  <%= link_to manager_work_order, manager_work_order_path(manager_work_order) %>
-  <br>
-<% end %>
+
 

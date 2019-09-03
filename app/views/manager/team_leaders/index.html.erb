@@ -1,6 +1,11 @@
 <h1>Teamsssssss</h1>
-<% @team_leaders.each do |manager_team_leader| %>
-  <%= link_to manager_team_leader.team_name, manager_team_leader_path(manager_team_leader) %>
-  <br>
-<% end %>
 <%= link_to 'New Team', new_manager_team_leader_path %>
+<br>
+<br>
+<br>
+<div>
+    <% @team_leaders.each do |manager_team_leader| %>
+    <%= link_to manager_team_leader.team_name, manager_team_leader_path(manager_team_leader) %>
+    <br>
+</div>
+<% end %>

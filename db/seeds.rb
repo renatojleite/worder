@@ -24,8 +24,8 @@ puts "Team leader created!!"
 
 puts "Creating work order"
 
-WorkOrder.create!(team_leader: team_leader)
-WorkOrder.create!(team_leader: team_leader2)
+WorkOrder.create!(team_leader: team_leader, name: "job1")
+WorkOrder.create!(team_leader: team_leader2, name: "job2")
 
 puts "Work order created!!"
 
