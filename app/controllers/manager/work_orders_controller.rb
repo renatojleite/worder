@@ -1,6 +1,5 @@
 class Manager::WorkOrdersController < ApplicationController
-
-  before_action :set_work_order, only: [:show, :edit, :update, :delete]
+  before_action :set_work_order, only: %i[show edit update delete]
 
   def index
     @work_orders = WorkOrder.all
