@@ -1,7 +1,10 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 
-puts "Creating Users...."
+User.destroy_all
+Manager.destroy_all
+TeamLeader.destroy_all
+WorkOrder.destroy_all
 
 puts "Creating users..."
 user = User.create!(email: "user@mail.com", password: "123456" )
@@ -20,5 +23,8 @@ puts "Creating work order"
 
 WorkOrder.create!(team_leader: team_leader)
 
-puts "Work order created!!"
+puts "Work order created!!
 
+puts "Users created: #{User.count}"
+puts "Manager created: #{Manager.count}"
+puts "Team leader created: #{TeamLeader.count}"
