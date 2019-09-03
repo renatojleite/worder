@@ -6,10 +6,10 @@ TeamLeader.destroy_all
 WorkOrder.destroy_all
 
 puts "Creating users..."
-user = User.create!(email: "user@mail.com", password: "123456" )
-user2 = User.create!(email: "user2@mail.com", password: "123456" )
-admin = User.create!(email: "admin@mail.com", password: "123456" )
-admin2 = User.create!(email: "admin2@mail.com", password: "123456" )
+user = User.create!(name:"nome-user1", email: "user@mail.com", password: "123456" )
+user2 = User.create!(name:"nome-user2", email: "user2@mail.com", password: "123456" )
+admin = User.create!(name:"nome-admin1", email: "admin@mail.com", password: "123456" )
+admin2 = User.create!(name:"nome-admin2", email: "admin2@mail.com", password: "123456" )
 puts "Users created!! booyah"
 
 puts "Creating manager..."

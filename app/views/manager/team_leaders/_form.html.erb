@@ -3,3 +3,6 @@
   <%= f.association :user %>
   <%= f.button :submit, class: 'btn btn-primary' %>
 <% end %>
+
+
+<%#= f.association :user, collection: User.where(admin: false) %>
