@@ -1,4 +1,5 @@
 class Manager::TeamLeadersController < ApplicationController
+
   def index
   end
 
