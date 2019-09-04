@@ -2,7 +2,9 @@ class WorkOrdersController < ApplicationController
   before_action :set_work_order, only: %i[show update]
   def index
     @work_orders = WorkOrder.all
+
   end
+
 
   def show
   end
