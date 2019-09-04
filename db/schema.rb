@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_04_163649) do
+ActiveRecord::Schema.define(version: 2019_09_04_204243) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,13 +30,7 @@ ActiveRecord::Schema.define(version: 2019_09_04_163649) do
     t.index ["user_id"], name: "index_managers_on_user_id"
   end
 
-  create_table "statuses", force: :cascade do |t|
-    t.string "status_name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "team_leaders", force: :cascade do |t|
+  create_table "team_leadersders", force: :cascade do |t|
     t.string "team_name"
     t.bigint "user_id"
     t.bigint "manager_id"
@@ -69,13 +63,13 @@ ActiveRecord::Schema.define(version: 2019_09_04_163649) do
     t.string "start_photo"
     t.string "end_photo"
     t.bigint "team_leader_id"
-    t.bigint "status_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
     t.float "latitude"
     t.float "longitude"
-    t.index ["status_id"], name: "index_work_orders_on_status_id"
+    t.text "report"
+    t.integer "status"
     t.index ["team_leader_id"], name: "index_work_orders_on_team_leader_id"
   end
 
@@ -83,6 +77,5 @@ ActiveRecord::Schema.define(version: 2019_09_04_163649) do
   add_foreign_key "managers", "users"
   add_foreign_key "team_leaders", "managers"
   add_foreign_key "team_leaders", "users"
-  add_foreign_key "work_orders", "statuses"
   add_foreign_key "work_orders", "team_leaders"
 end
