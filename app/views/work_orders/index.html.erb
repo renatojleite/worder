@@ -15,14 +15,10 @@
 </div>
 
 
-
-<% @work_orders.each do |work_order| %>
-  <%= link_to 'view', work_order_path(work_order), :class => "btn - btn-primary" %>
-<% end %>
-
-
-<%#= simple_form_for @, do |f| %>
-<%#= f.input :content %>
-<%#end %>
-
-
+<ul>
+  <% @work_orders.each do |work_order| %>
+    <li>
+      <%= link_to "#{work_order.name}", work_order_path(work_order), :class => "btn - btn-primary" %>
+    </li>
+  <% end %>
+</ul>
