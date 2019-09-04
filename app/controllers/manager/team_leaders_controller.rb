@@ -32,7 +32,7 @@ class Manager::TeamLeadersController < ApplicationController
 
   def update
     @team_leader.update(team_leader_params)
-    redirect_to team_leader_path(@team_leaders)
+    redirect_to manager_team_leaders_path
   end
 
   def destroy
