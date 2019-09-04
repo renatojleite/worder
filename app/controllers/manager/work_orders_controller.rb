@@ -59,6 +59,7 @@ class Manager::WorkOrdersController < ApplicationController
                                         :start_photo,
                                         :end_photo,
                                         :team_leader_id,
-                                        :status_id)
+                                        :status,
+                                        :report)
   end
 end

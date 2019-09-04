@@ -5,6 +5,9 @@
 
   <!-- INFOS INICIAIS -->
   <%= f.association :team_leader, label: "Alocar a equipe:" %>
+  <%#= f.association :team_leader, collection: TeamLeader.team_name %>
+  <%= f.association :team_leader, label_method: :leader_name, value_method: :id, include_blank: false %>
+
   <%= f.input :priority, label: "Prioridade:" %>
   <%#= f.association :status %>
   <%#= f.association :region %>
@@ -21,7 +24,7 @@
 
 
   <!-- USER FORM -->
-  <%= f.input :description, as: :text, label: "USER - Observação sobre o serviço realizado" %>
+  <%#= f.input :description, as: :text, label: "USER - Observação sobre o serviço realizado" %>
 
 
   <%= f.button :submit, class: 'btn btn-primary' %>
