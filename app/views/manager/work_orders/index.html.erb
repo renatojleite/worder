@@ -16,24 +16,22 @@
     </div>
 
 
-  <div class="col-4">
-    <h1>WO-index</h1>
-  </div>
+    <div class="col-4">
+      <div id="calendar"></div>
+      <h1>WO-index</h1>
 
-  <div class="col-4">
-    <%= link_to "Criar Order", new_manager_work_order_path %>
-    <ul>
-    <% @work_orders.each do |order| %>
-      <li>
-
-        <%= link_to "#{order.name}", manager_work_order_path(order)%>
-
-      </li>
-    <% end %>
-    </ul>
-</div>
-
-</div>
+      <div class="col-4">
+        <%= link_to "Criar Order", new_manager_work_order_path %>
+        <ul>
+        <% @work_orders.each do |order| %>
+          <li>
+          <%= link_to "#{order.name}", manager_work_order_path(order)%>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+ </div>
 </div>
 
 
