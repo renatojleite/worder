@@ -2,7 +2,11 @@ class Manager::TeamLeadersController < ApplicationController
   before_action :set_team_leader, only: %i[show edit update delete]
 
   def index
-    @team_leaders = TeamLeader.all
+    if params[:query].present?
+      @team_leaders = TeamLeader.where("team_name ILIKE ?", "%#{params[:query]}%")
+    else
+      @team_leaders = TeamLeader.all
+    end
   end
 
   def new
