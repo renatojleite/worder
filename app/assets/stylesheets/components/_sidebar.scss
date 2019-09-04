@@ -67,6 +67,7 @@ a, a:hover, a:focus {
 
 #sidebar {
     /* don't forget to add all the previously mentioned styles here too */
+    padding: 60px 0px;
     background: #7386D5;
     color: #fff;
     transition: all 0.3s;
@@ -107,6 +108,7 @@ ul ul a {
 }
 
 
+// position do botao para ocultar o menu sidebar
 
 .column1 {
   position: relative;
@@ -114,8 +116,13 @@ ul ul a {
 
 #sidebarCollapse {
   position: absolute;
-  left: 0;
-  top: 1px;
+  left: 22px;
+  top: 10px;
 }
 
 
+//
+
+.content-master {
+  padding: 50px 50px;
+}

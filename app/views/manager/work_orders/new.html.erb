@@ -1,7 +1,23 @@
 <div class="wrapper">
+  <div id="content">
+    <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light"> -->
+        <div class="contaisner-fluid">
+          <button type="button" id="sidebarCollapse" class="btn btn-info">
+          <i class="fas fa-align-left"></i>
+          <span>Toggle Sidebar</span>
+          </button>
+        </div>
+      <!-- </nav> -->
+      </div>
 <%= render 'sidebar' %>
+<div class="container content-master">
+<div class="col-8">
 <h1>Manager::WorkOrders#new</h1>
-<p>Find me in app/views/manager/work_orders/new.html.erb</p>
 <%= render 'form' %>
+</div>
 
+<div class="col-4">
+<p>Find me in app/views/manager/work_orders/new.html.erb</p>
+</div>
+</div>
 </div>
