@@ -11,7 +11,6 @@ gem 'rails', '5.2.3'
 gem 'redis'
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
-gem 'fullcalendar-rails', '~> X.Y.Z.0'
 
 gem 'geocoder'
 gem 'autoprefixer-rails'
