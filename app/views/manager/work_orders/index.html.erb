@@ -38,6 +38,13 @@
   </div>
 </div>
 
-
+<%= form_tag manager_work_orders_path, method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Find a team"
+  %>
+  <%= submit_tag "Search", class: "btn btn-primary" %>
+<% end %>
 
 
