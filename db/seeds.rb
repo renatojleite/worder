@@ -5,6 +5,11 @@ Manager.destroy_all
 TeamLeader.destroy_all
 WorkOrder.destroy_all
 
+categories = ["Vistoria", "Tapa buraco", "Encanamento de Gás", "Encanamento de Água", "Fiação elétrica"]
+categories.each do |categorie|
+  Category.create(name: categorie)
+end
+
 puts "Creating users..."
 user = User.create!(name:"nome-user1", email: "user@mail.com", password: "123456" )
 user2 = User.create!(name:"nome-user2", email: "user2@mail.com", password: "123456" )
