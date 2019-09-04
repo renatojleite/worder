@@ -1,1 +1,5 @@
-<% render 'form' %>
+<%= simple_form_for @team_leader, url: manager_team_leader_path do |f| %>
+  <%= f.input :team_name %>
+  <%= f.association :user %>
+  <%= f.button :submit, class: 'btn btn-primary' %>
+<% end %>
