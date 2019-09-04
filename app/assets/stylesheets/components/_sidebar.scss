@@ -5,8 +5,8 @@
 }
 
 #sidebar {
-    min-width: 250px;
-    max-width: 250px;
+    min-width: 170px;
+    max-width: 170px;
     min-height: 100vh;
     h3 {
       text-align: center;
@@ -14,7 +14,7 @@
 }
 
 #sidebar.active {
-    margin-left: -250px;
+    margin-left: -150px;
 }
 
 a[data-toggle="collapse"] {
@@ -25,7 +25,7 @@ a[data-toggle="collapse"] {
     display: block;
     position: absolute;
     top: 50%;
-    right: 20px;
+    right: 40px;
     transform: translateY(-50%);
 }
 
@@ -34,7 +34,7 @@ a[data-toggle="collapse"] {
 
 @media (max-width: 768px) {
     #sidebar {
-        margin-left: -250px;
+        margin-left: -200px;
     }
     #sidebar.active {
         margin-left: 0;
@@ -79,7 +79,6 @@ a, a:hover, a:focus {
 
 #sidebar ul.components {
     padding: 20px 0;
-    border-bottom: 1px solid #47748b;
 }
 
 #sidebar ul p {
@@ -102,7 +101,21 @@ a, a:hover, a:focus {
     background: #6d7fcc;
 }
 ul ul a {
-    font-size: 0.9em !important;
+    font-size: 0.7em !important;
     padding-left: 30px !important;
     background: #6d7fcc;
 }
+
+
+
+.column1 {
+  position: relative;
+}
+
+#sidebarCollapse {
+  position: absolute;
+  left: 0;
+  top: 1px;
+}
+
+
