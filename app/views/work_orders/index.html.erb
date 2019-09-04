@@ -14,9 +14,10 @@
   </div>
 </div>
 
+
+
 <% @work_orders.each do |work_order| %>
-  <%= link_to work_order,work_order_path(work_order) %>
-  <br>
+  <%= link_to 'view', work_order_path(work_order), :class => "btn - btn-primary" %>
 <% end %>
 
 
