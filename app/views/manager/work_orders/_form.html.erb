@@ -3,9 +3,7 @@
   <%= f.association :team_leader %>
   <%= f.input :priority %>
   <%= f.input :address, placeholder: 'Endereço no Google Maps' %>
-  <%= f.input :due_date, as: :date, start_year: Date.today.year,
-                              end_year: Date.today.year + 2,
-                              order: [:day, :month, :year] %>
+  <%= f.input :due_date, as: :date, start_year: Date.today.year, end_year: Date.today.year + 2, order: [:day, :month, :year] %>
   <%= f.input :due_time, as: :time %>
   <%= f.input :description, as: :text %>
   <%= f.button :submit, class: 'btn btn-primary' %>
