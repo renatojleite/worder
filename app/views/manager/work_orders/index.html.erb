@@ -22,13 +22,15 @@
 
   <div class="col-4">
     <%= link_to "Criar Order", new_manager_work_order_path %>
-    <% @work_orders.each do |manager_work_order| %>
     <ul>
+    <% @work_orders.each do |order| %>
       <li>
-      <%= link_to manager_work_order.name, manager_work_order_path(manager_work_order)%>
+
+        <%= link_to "#{order.name}", manager_work_order_path(order)%>
+
       </li>
-    </ul>
     <% end %>
+    </ul>
 </div>
 
 </div>
