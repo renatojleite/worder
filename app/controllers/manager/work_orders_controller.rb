@@ -18,9 +18,8 @@ class Manager::WorkOrdersController < ApplicationController
 
   def create
     @work_order = WorkOrder.new(work_order_params)
-    @work_order.user = current_user
     if @work_order.save
-      redirect_to user_work_orders_path
+      redirect_to manager_work_orders_path
     else
       render 'new'
     end
@@ -46,6 +45,16 @@ class Manager::WorkOrdersController < ApplicationController
   end
 
   def work_order_params
-    params.require(:work_order).permit(:priority, :address, :due_time, :due_date, :description, :completion_date, :start_photo, :end_photo, :team_leader_id, :status_id)
+    params.require(:work_order).permit( :name,
+                                        :priority,
+                                        :address,
+                                        :due_time,
+                                        :due_date,
+                                        :description,
+                                        :completion_date,
+                                        :start_photo,
+                                        :end_photo,
+                                        :team_leader_id,
+                                        :status_id)
   end
 end

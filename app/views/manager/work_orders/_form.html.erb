@@ -1,10 +1,29 @@
 <%= simple_form_for @work_order, url: manager_work_orders_path do |f| %>
-  <%= f.input :name %>
-  <%= f.association :team_leader %>
-  <%= f.input :priority %>
-  <%= f.input :address, placeholder: 'Endereço no Google Maps' %>
-  <%= f.input :due_date, as: :date, start_year: Date.today.year, end_year: Date.today.year + 2, order: [:day, :month, :year] %>
-  <%= f.input :due_time, as: :time %>
-  <%= f.input :description, as: :text %>
+  <!--  NOVO JOB -->
+  <%= f.input :name, label: "Novo W.O - Título:" %>
+
+
+  <!-- INFOS INICIAIS -->
+  <%= f.association :team_leader, label: "Alocar a equipe:" %>
+  <%= f.input :priority, label: "Prioridade:" %>
+  <%#= f.association :status %>
+  <%#= f.association :region %>
+  <%= f.input :address, label: "Endereço:", placeholder: 'Endereço no Google Maps (ligar na API MAPA)' %>
+
+
+  <!-- PRAZO E HR -->
+  <%= f.input :due_date, label: "Prazo:", as: :date, start_year: Date.today.year, end_year: Date.today.year + 2, order: [:day, :month, :year] %>
+  <%= f.input :due_time, label: "Horário:", as: :time %>
+
+
+  <!-- DETALHES -->
+  <%= f.input :description, label: "Detalhes sobre o serviço:", as: :text %>
+
+
+  <!-- USER FORM -->
+  <%= f.input :description, as: :text, label: "USER - Observação sobre o serviço realizado" %>
+
+
   <%= f.button :submit, class: 'btn btn-primary' %>
+
 <% end %>

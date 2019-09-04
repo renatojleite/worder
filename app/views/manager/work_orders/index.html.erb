@@ -1,44 +1,38 @@
 <div class="container-full">
-  <div class="row justify-content-center">
-    <div class="col-4 column1">
+  <div class="row">
 
+    <div class="col-4 column1">
       <div id="content">
     <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light"> -->
-          <div class="container-fluid">
-              <button type="button" id="sidebarCollapse" class="btn btn-info">
-                  <i class="fas fa-align-left"></i>
-                  <span>Toggle Sidebar</span>
-              </button>
-          </div>
+        <div class="container-fluid">
+          <button type="button" id="sidebarCollapse" class="btn btn-info">
+          <i class="fas fa-align-left"></i>
+          <span>Toggle Sidebar</span>
+          </button>
+        </div>
       <!-- </nav> -->
       </div>
       <%= render 'sidebar' %>
-
     </div>
 
 
-<div class="col-4 column2">
+    <div class="col-4">
+      <div id="calendar"></div>
+      <h1>WO-index</h1>
 
+      <div class="col-4">
+        <%= link_to "Criar Order", new_manager_work_order_path %>
+        <ul>
+        <% @work_orders.each do |order| %>
+          <li>
+          <%= link_to "#{order.name}", manager_work_order_path(order)%>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+ </div>
 </div>
-<div class="col-4">
-  <div id="calendar"></div>
-  <h1>WO-index</h1>
-
-
-  <%= link_to "Criar Order", new_manager_work_order_path %>
-
-  <% @work_orders.each do |manager_work_order| %>
-  <ul>
-    <li>
-   <%= link_to manager_work_order.name, manager_work_order_path(manager_work_order) %></li>
-  </ul>
-<% end %>
-</div>
-  </div>
-</div>
-
-
-
 
 
 

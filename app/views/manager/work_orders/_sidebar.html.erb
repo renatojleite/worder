@@ -7,16 +7,17 @@
     <ul class="list-unstyled components">
         <p>Dummy Heading</p>
         <li class="active">
-            <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
+
+            <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Dashboard</a>
             <ul class="collapse list-unstyled" id="homeSubmenu">
                 <li>
-                <a href="#">Home 1</a>
+                <%= link_to "Dashboard", manager_work_orders_path%>
                 </li>
                 <li>
-                <a href="#">Home 2</a>
+                <%= link_to "Ordens de Serviço", manager_work_orders_path%>
                 </li>
                 <li>
-                <a href="#">Home 3</a>
+                <%= link_to "Equipes", manager_team_leaders_path%>
                 </li>
             </ul>
         </li>
