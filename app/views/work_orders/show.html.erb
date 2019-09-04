@@ -1,10 +1,17 @@
-<h1>WorkOrders#show</h1>
+<h1> Work Order </h1>
 
-<h1>WorkOrdere.name(order name)</h1>
+<ul>
+  <li>
+    <h1><%= @work_order.name %></h1>
+    <h2><%= @work_order.description %></h2>
+    <%= @work_order.address%>
+    <%= link_to 'Como chegar'  %>
+    <h2><%= @work_order.priority %></h2>
+  </li>
+</ul>
 
 <h1>map</h1>
 
-<%= link_to 'Como chegar'  %>
 
 <br>
 <br>

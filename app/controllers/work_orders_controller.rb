@@ -1,10 +1,13 @@
 class WorkOrdersController < ApplicationController
   before_action :set_work_order, only: %i[show update]
+  # def index
+  #   @work_orders = WorkOrder.all
+  # end
+
   def index
-    @work_orders = WorkOrder.all
-
+    user = TeamLeader.find_by(user: current_user)
+    @work_orders = WorkOrder.where(team_leader: user)
   end
-
 
   def show
   end
