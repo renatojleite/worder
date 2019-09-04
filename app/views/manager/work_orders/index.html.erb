@@ -48,3 +48,12 @@
 <% end %>
 
 
+
+<form action= "work_orders" >
+  <select name="team">
+    <% @team_leaders.each do |team| %>
+      <option value="<%= team.id %>"><%= team.team_name %></option>
+    <% end %>
+  </select>
+  <input type="submit" value="Submit">
+</form>

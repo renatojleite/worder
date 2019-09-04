@@ -2,11 +2,11 @@ class Manager::WorkOrdersController < ApplicationController
   before_action :set_work_order, only: %i[show edit update delete]
 
   def index
-    if params[:query].present?
-      @work_orders = WorkOrder.where("name ILIKE ?", "%#{params[:query]}%")
-    else
-      @work_orders = WorkOrder.all
-    end
+    @team_leaders = TeamLeader.all
+    @work_orders = WorkOrder.all
+
+    @work_orders = WorkOrder.where("name ILIKE ?", "%#{params[:query]}%") if params[:query].present?
+    @work_orders = WorkOrder.where(team_leader_id: params[:team]) if params[:team].present?
   end
 
   def new
