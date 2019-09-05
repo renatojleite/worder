@@ -5,12 +5,20 @@
     <h1><%= @work_order.name %></h1>
     <h2><%= @work_order.description %></h2>
     <%= @work_order.address%>
-    <%= link_to 'Como chegar'  %>
+    <div
+    id="map"
+    style="width: 100%;
+    height: 600px;"
+    data-marker="<%= @marker.to_json %>"
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+
+  </div>
     <h2><%= @work_order.priority %></h2>
   </li>
 </ul>
 
 <h1>map</h1>
+
 
 
 <br>
