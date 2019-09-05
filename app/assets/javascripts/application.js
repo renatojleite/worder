@@ -16,5 +16,4 @@ $(document).ready(function () {
         $('#sidebarCollapse').removeClass('active-focus')
         $('#sidebar').toggleClass('active');
     });
-
 });
