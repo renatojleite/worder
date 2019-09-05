@@ -86,7 +86,7 @@
           <ul>
             <% @work_orders.each do |order| %>
             <li>
-            <%= link_to "#{order.name}", work_order_path(order) %>
+            <%= link_to "#{order.name}", manager_work_order_path(order) %>
             </li>
             <% end %>
           </ul>

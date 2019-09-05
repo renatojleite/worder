@@ -21,6 +21,7 @@ class Manager::WorkOrdersController < ApplicationController
 
   def show
     @marker = { lat: @work_order.latitude, lng: @work_order.longitude }
+    # raise
   end
 
   def create
