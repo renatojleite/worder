@@ -2,7 +2,11 @@ class Manager::WorkOrdersController < ApplicationController
   before_action :set_work_order, only: %i[show edit update delete]
 
   def index
+    @team_leaders = TeamLeader.all
     @work_orders = WorkOrder.all
+
+    @work_orders = WorkOrder.where("name ILIKE ?", "%#{params[:query]}%") if params[:query].present?
+    @work_orders = WorkOrder.where(team_leader_id: params[:team]) if params[:team].present?
   end
 
   def new
@@ -52,6 +56,7 @@ class Manager::WorkOrdersController < ApplicationController
                                         :start_photo,
                                         :end_photo,
                                         :team_leader_id,
-                                        :status_id)
+                                        :status,
+                                        :report)
   end
 end

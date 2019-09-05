@@ -1,16 +1,25 @@
-<h1>WorkOrders#show</h1>
+<h1> Work Order </h1>
 
-<h1>WorkOrdere.name(order name)</h1>
+<ul>
+  <li>
+    <h1><%= @work_order.name %></h1>
+    <h2><%= @work_order.description %></h2>
+    <%= @work_order.address%>
+    <%= link_to 'Como chegar'  %>
+    <h2><%= @work_order.priority %></h2>
+  </li>
+</ul>
 
 <h1>map</h1>
 
-<%= link_to 'Como chegar'  %>
 
 <br>
 <br>
-<%= simple_form_for @work_order do |f| %>
-  <%= f.input :description, as: :text %>
-  <%= f.button :submit, :class => "btn - btn-primary" %>
+<%= simple_form_for @work_order, method: :patch do |f| %>
+  <%= f.input :report %>
+
+  <%= f.input :status, collection: { Aberto: 1, "Em Andamento": 2, Concluido: 3 } %>
+  <%= f.button :submit, class: "btn btn-primary" %>
 <% end %>
 
 

@@ -1,12 +1,18 @@
 class WorkOrdersController < ApplicationController
-  before_action :set_work_order, only: %i[show update]
-  def index
-    @work_orders = WorkOrder.all
+  before_action :set_work_order, only: %i[show edit update]
+  # def index
+  #   @work_orders = WorkOrder.all
+  # end
 
+  def index
+    user = TeamLeader.find_by(user: current_user)
+    @work_orders = WorkOrder.where(team_leader: user)
   end
 
-
   def show
+  end
+
+  def edit
   end
 
   def update
@@ -21,6 +27,6 @@ class WorkOrdersController < ApplicationController
   end
 
   def work_order_params
-    params.require(:work_order).permit(:priority, :address, :due_time, :due_date, :description, :completion_date, :start_photo, :end_photo, :team_leader_id, :status_id)
+    params.require(:work_order).permit(:priority, :address, :due_time, :due_date, :description, :completion_date, :start_photo, :end_photo, :team_leader_id, :report, :status)
   end
 end

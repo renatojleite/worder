@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
   # USER
-  resources :work_orders, only: [:index, :show, :update]
+  resources :work_orders, only: [:index, :show, :edit, :update]
 
   # ADMIN
   # namespace
