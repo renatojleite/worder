@@ -17,3 +17,9 @@ $(document).ready(function () {
         $('#sidebar').toggleClass('active');
     });
 });
+
+Swal.fire(
+  'Good job!',
+  'You clicked the button!',
+  'success'
+)
