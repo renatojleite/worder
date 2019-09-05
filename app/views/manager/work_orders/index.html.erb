@@ -81,16 +81,6 @@
                 </form>
               </div>
           </div>
-          <div class="col-4">
-            <form action= "work_orders" >
-              <select name="team">
-              <% @team_leaders.each do |team| %>
-                <option value="<%= team.id %>"><%= team.team_name %></option>
-              <% end %>
-              </select>
-              <input type="submit" value="Submit">
-            </form>
-          </div>
         </div>
         <!-- Work Orders index -->
         <div>
