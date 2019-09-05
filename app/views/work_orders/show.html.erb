@@ -1,7 +1,8 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <a class="navbar-brand" >
     <img src="https://www.shareicon.net/data/128x128/2016/04/10/747355_man_512x512.png" />
-</a>
+  </a>
+
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
@@ -23,28 +24,32 @@
 
     <%= @work_order.address%>
 
-  </div>
-    <h2><%= @work_order.priority %></h2>
-  </li>
-</ul>
+<br>
+<div class="text-center">
+    <h1> Work Order <%= @work_order.name %> </h1>
+    <h3>Endereço <%= @work_order.address%> </h3>
+    <h3>Priority:  <%= @work_order.priority %></h3>
+</div>
+<br>
 
-<h1>map</h1>
-
+<div class="container ">
   <div
     id="map"
     style="width: 100%;
-    height: 600px;"
+    height: 300px;"
     data-marker="<%= @marker.to_json %>"
     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
+</div>
 
-<div class="container-full  content-master">
-  <br>
-  <br>
-  <%= simple_form_for @work_order do |f| %>
+<div class="container-full content-master">
+<br>
+<br>
+    <%= simple_form_for @work_order do |f| %>
     <%= f.input :report %>
     <%= f.input :status, collection: { Aberto: 1, "Em Andamento": 2, Concluido: 3 } %>
-    <%= f.input :photo, input_html: { class: 'hidden' }, label_html: { class: 'upload-photo'}, label: ' 📷 Upload a photo', class: "btn btn-primary" %>
+    <%= f.input :photo, input_html: { class: 'hidden' }, label_html: { class: 'upload-photo'}, label: ' 📷 Upload a photo', class: "btn-primary" %>
     <%= f.button :submit, class: "btn btn-primary" %>
-  <% end %>
+    <%= f.input :photo_cache, as: :hidden %>
+    <% end %>
 </div>
