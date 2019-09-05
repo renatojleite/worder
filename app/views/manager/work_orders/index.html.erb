@@ -59,8 +59,8 @@
 
   <form action= "work_orders" >
     <select name="priority">
-      <% @work_orders_full.each do |work_order| %>
-        <option value="<%= work_order.priority %>"><%= priority_level(work_order.priority) %></option>
+      <% @work_orders_full.pluck(:priority).uniq.each do |work_order| %>
+        <option value="<%= work_order %>"><%= priority_level(work_order) %></option>
       <% end %>
     </select>
     <input type="submit" value="Submit">
@@ -68,8 +68,8 @@
 
   <form action= "work_orders" >
     <select name="status">
-      <% @work_orders_full.each do |work_order| %>
-        <option value="<%= work_order.status %>"><%= status_name(work_order.status) %></option>
+      <% @work_orders_full.pluck(:status).uniq.each do |work_order| %>
+        <option value="<%= work_order %>"><%= status_name(work_order) %></option>
       <% end %>
     </select>
     <input type="submit" value="Submit">
