@@ -19,6 +19,6 @@
 </div>
 
 
-<%#= cl_image_tag @work_order.photo, height: 300, width: 400, crop: :fill %>
-
-<%#= cl_image_tag @work_order.photo, height: 300, width: 400, crop: :fill %>
+<%= cl_image_tag @work_order.photo, height: 300, width: 400, crop: :fill %>
+<%= @work_order.report %>
+<%#= cl_image_path @work_order.photo_url, height: 300, width: 400, crop: :fill %>
