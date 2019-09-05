@@ -2,6 +2,7 @@ class Manager::TeamLeadersController < ApplicationController
   before_action :set_team_leader, only: %i[show edit update delete]
 
   def index
+    # Filtros + Show all for index
     if params[:query].present?
       @team_leaders = TeamLeader.where("team_name ILIKE ?", "%#{params[:query]}%")
     else
@@ -10,8 +11,15 @@ class Manager::TeamLeadersController < ApplicationController
   end
 
   def new
-    @team_leader = TeamLeader.new
+    # Filtros + Show all for index
+    if params[:query].present?
+      @team_leaders = TeamLeader.where("team_name ILIKE ?", "%#{params[:query]}%")
+    else
+      @team_leaders = TeamLeader.all
+    end
 
+    # New
+    @team_leader = TeamLeader.new
   end
 
   def create
@@ -32,6 +40,12 @@ class Manager::TeamLeadersController < ApplicationController
   end
 
   def edit
+    # Filtros + Show all for index
+    if params[:query].present?
+      @team_leaders = TeamLeader.where("team_name ILIKE ?", "%#{params[:query]}%")
+    else
+      @team_leaders = TeamLeader.all
+    end
   end
 
   def update
