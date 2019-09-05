@@ -5,8 +5,11 @@ class Manager::WorkOrdersController < ApplicationController
     @team_leaders = TeamLeader.all
     @work_orders = WorkOrder.all
 
-    @work_orders = WorkOrder.where("name ILIKE ?", "%#{params[:query]}%") if params[:query].present?
-    @work_orders = WorkOrder.where(team_leader_id: params[:team]) if params[:team].present?
+    # @work_orders = WorkOrder.where("name ILIKE ?", "%#{params[:query]}%") if params[:query].present?
+    # @work_orders = WorkOrder.where(team_leader_id: params[:team]) if params[:team].present?
+
+    @events = WorkOrder.where.not(due_date: nil).map { |w| { title: w.name, start: w.due_date } }
+
   end
 
   def new

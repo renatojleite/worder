@@ -30,5 +30,10 @@
   <%= f.button :submit, class: "btn btn-primary" %>
 <% end %>
 
+<%= simple_form_for(work_order) do |f| %>
+  <%= f.input :photo %>
+  <%= f.input :photo_cache, as: :hidden %>
+<% end %>
+
 
 
