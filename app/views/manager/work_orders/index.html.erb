@@ -75,3 +75,13 @@
     <input type="submit" value="Submit">
   </form>
 </div>
+
+  <form action= "work_orders" >
+    <select name="status">
+      <% @work_orders_full.pluck(:due_date).uniq.each do |work_order| %>
+        <option value="<%= work_order %>"><%= work_order %></option>
+      <% end %>
+    </select>
+    <input type="submit" value="Submit">
+  </form>
+</div>
