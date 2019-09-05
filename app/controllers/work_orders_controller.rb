@@ -21,6 +21,10 @@ class WorkOrdersController < ApplicationController
     params.require(:article).permit(:title, :body, :photo)
   end
 
+  def article_params
+    params.require(:article).permit(:title, :body, :photo)
+  end
+
   def edit
   end
 

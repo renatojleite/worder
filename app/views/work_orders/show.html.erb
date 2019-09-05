@@ -1,9 +1,8 @@
 <h1> Work Order </h1>
 
-<ul>
-  <li>
     <h1><%= @work_order.name %></h1>
     <h2><%= @work_order.description %></h2>
+
     <%= @work_order.address%>
 
   </div>
@@ -21,19 +20,12 @@
     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
 
-
-
 <br>
 <br>
-<%= simple_form_for @work_order, method: :patch do |f| %>
+<%= simple_form_for @work_order do |f| %>
   <%= f.input :report %>
-
   <%= f.input :status, collection: { Aberto: 1, "Em Andamento": 2, Concluido: 3 } %>
-  <%= f.button :submit, class: "btn btn-primary" %>
-<% end %>
-
-<%= simple_form_for(@work_order) do |f| %>
   <%= f.input :photo %>
   <%= f.input :photo_cache, as: :hidden %>
+  <%= f.button :submit, class: "btn btn-primary" %>
 <% end %>
-
