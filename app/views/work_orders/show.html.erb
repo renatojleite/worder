@@ -1,26 +1,26 @@
 <h1> Work Order </h1>
 
-<ul>
-  <li>
     <h1><%= @work_order.name %></h1>
     <h2><%= @work_order.description %></h2>
-    <%= @work_order.address%>
-    <%= link_to 'Como chegar'  %>
-    <h2><%= @work_order.priority %></h2>
-  </li>
-</ul>
-
-<h1>map</h1>
-
+    <h2><%= @work_order.address%></h2>
+    <h2>priority: <%= @work_order.priority %></h2>
 
 <br>
 <br>
-<%= simple_form_for @work_order, method: :patch do |f| %>
+<%= simple_form_for @work_order do |f| %>
   <%= f.input :report %>
-
   <%= f.input :status, collection: { Aberto: 1, "Em Andamento": 2, Concluido: 3 } %>
+  <%= f.input :photo %>
+  <%= f.input :photo_cache, as: :hidden %>
   <%= f.button :submit, class: "btn btn-primary" %>
 <% end %>
 
 
 
+
+<div id="map"
+  style="width: 100%;
+  height: 600px;"
+  data-marker="<%= @marker.to_json %>"
+  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+</div>

@@ -14,12 +14,13 @@
   <div class="container-full   content-master">
     <div class="row">
 
+
       <div class="col-6">
       <!-- Inicio da 1º coluna -->
       <!-- Calendar -->
       <div class="card-dashboard">
       <p>WO-calendário</p>
-      <div class="card-dashboard-header" id="calendar">
+      <div id="calendar" class="card-dashboard-header" data-event="<%= @events.to_json %>" >
       </div>
       </div>
 
@@ -36,10 +37,49 @@
         <div class="row">
           <div class="col-8">
             <%= form_tag manager_work_orders_path, method: :get do %>
-              <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Find a team"
-              %>
+            <%= text_field_tag :query,
+              params[:query],
+              class: "form-control",
+              placeholder: "Find a team" %>
             <%= submit_tag "Search", class: "btn btn-primary" %>
             <% end %>
+                 <form action= "work_orders" >
+                  <select name="team">
+                    <% @team_leaders.each do |team| %>
+                      <option value="<%= team.id %>"><%= team.team_name %></option>
+                    <% end %>
+                  </select>
+                  <input type="submit" value="Submit">
+                </form>
+
+                <form action= "work_orders" >
+                  <select name="priority">
+                    <% @work_orders_full.pluck(:priority).uniq.each do |work_order| %>
+                      <option value="<%= work_order %>"><%= priority_level(work_order) %></option>
+                    <% end %>
+                  </select>
+                  <input type="submit" value="Submit">
+                </form>
+
+                <form action= "work_orders" >
+                  <select name="status">
+                    <% @work_orders_full.pluck(:status).uniq.each do |work_order| %>
+                      <option value="<%= work_order %>"><%= status_name(work_order) %></option>
+                    <% end %>
+                  </select>
+                  <input type="submit" value="Submit">
+                </form>
+              </div>
+
+                <form action= "work_orders" >
+                  <select name="status">
+                    <% @work_orders_full.pluck(:due_date).uniq.each do |work_order| %>
+                      <option value="<%= work_order %>"><%= work_order %></option>
+                    <% end %>
+                  </select>
+                  <input type="submit" value="Submit">
+                </form>
+              </div>
           </div>
           <div class="col-4">
             <form action= "work_orders" >

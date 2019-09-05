@@ -4,7 +4,10 @@
 //= require fullcalendar
 //= require fullcalendar/locale-all
 
-$('#calendar').fullCalendar({});
+
+$('#calendar').fullCalendar({
+  events: $('#calendar').data('event')
+});
 
 
 $(document).ready(function () {
@@ -13,5 +16,4 @@ $(document).ready(function () {
         $('#sidebarCollapse').removeClass('active-focus')
         $('#sidebar').toggleClass('active');
     });
-
 });

@@ -38,8 +38,13 @@ team_leader2 = TeamLeader.create!(user: user2, manager: manager2, team_name: "Ti
 puts "Team leader created!!"
 
 puts "Creating work order"
-WorkOrder.create!(team_leader: team_leader, name: "job1")
-WorkOrder.create!(team_leader: team_leader2, name: "job2")
+WorkOrder.create!(team_leader: team_leader, name: "job1", priority: 1, status: 2, due_date: DateTime.new(2001,2,3,4,5,6))
+WorkOrder.create!(team_leader: team_leader2, name: "job2", priority: 1, status: 3, due_date: DateTime.new(2001,2,3,4,5,6))
+WorkOrder.create!(team_leader: team_leader, name: "job3", priority: 3, status: 1, due_date: DateTime.new(2001,2,3,4,5,6))
+WorkOrder.create!(team_leader: team_leader, name: "job4", priority: 2, status: 2, due_date: DateTime.new(2001,2,3,4,5,6))
+WorkOrder.create!(team_leader: team_leader2, name: "job5", priority: 3, status: 3, due_date: DateTime.new(2010,2,3,4,5,6))
+WorkOrder.create!(team_leader: team_leader, name: "job6", priority: 1, status: 2, due_date: DateTime.new(2010,2,3,4,5,6))
+WorkOrder.create!(team_leader: team_leader2, name: "job7", priority: 2, status: 1, due_date: DateTime.new(2010,2,3,4,5,6))
 puts "Work order created!!"
 
 puts "Users created: #{User.count}"
