@@ -8,14 +8,15 @@ class WorkOrdersController < ApplicationController
     user = TeamLeader.find_by(user: current_user)
     @work_orders = WorkOrder.where(team_leader: user)
   end
-  
+
   def new
     @work_order = WorkOrder.new
   end
 
-   def show
-    @marker = { lat: @work_order.latitude, lng: @work_order.longitude }
-     
+  def show
+   @marker = { lat: @work_order.latitude, lng: @work_order.longitude }
+  end
+
   def article_params
     params.require(:article).permit(:title, :body, :photo)
   end
