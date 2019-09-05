@@ -30,7 +30,7 @@
       <div class="col-6">
       <!-- Inicio da 2º coluna -->
       <!-- Filtros Work Orders -->
-      <div class="card-dashboard">
+      <div class="card-dashboard p-5">
         <div class="card-dashboard-header">
         <p>WO-index</p>
         </div>
@@ -69,10 +69,9 @@
                   </select>
                   <input type="submit" value="Submit">
                 </form>
-              </div>
 
                 <form action= "work_orders" >
-                  <select name="status">
+                  <select name="due_date">
                     <% @work_orders_full.pluck(:due_date).uniq.each do |work_order| %>
                       <option value="<%= work_order %>"><%= work_order %></option>
                     <% end %>
@@ -81,7 +80,7 @@
                 </form>
               </div>
           </div>
-        </div>
+
         <!-- Work Orders index -->
         <div>
           <ul>
@@ -95,7 +94,6 @@
       </div>
       <!-- Final da 2º coluna -->
       </div>
-
     </div>
   </div>
 </div>
