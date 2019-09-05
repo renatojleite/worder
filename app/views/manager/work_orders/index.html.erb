@@ -32,7 +32,7 @@
       </div>
     </div>
  </div>
-</div>
+
 
 <%= form_tag manager_work_orders_path, method: :get do %>
   <%= text_field_tag :query,
@@ -45,11 +45,30 @@
 
 
 
-<form action= "work_orders" >
-  <select name="team">
-    <% @team_leaders.each do |team| %>
-      <option value="<%= team.id %>"><%= team.team_name %></option>
-    <% end %>
-  </select>
-  <input type="submit" value="Submit">
-</form>
+  <form action= "work_orders" >
+    <select name="team">
+      <% @team_leaders.each do |team| %>
+        <option value="<%= team.id %>"><%= team.team_name %></option>
+      <% end %>
+    </select>
+    <input type="submit" value="Submit">
+  </form>
+
+  <form action= "work_orders" >
+    <select name="priority">
+      <% @work_orders_full.each do |work_order| %>
+        <option value="<%= work_order.priority %>"><%= priority_level(work_order.priority) %></option>
+      <% end %>
+    </select>
+    <input type="submit" value="Submit">
+  </form>
+
+  <form action= "work_orders" >
+    <select name="status">
+      <% @work_orders_full.each do |work_order| %>
+        <option value="<%= work_order.status %>"><%= status_name(work_order.status) %></option>
+      <% end %>
+    </select>
+    <input type="submit" value="Submit">
+  </form>
+</div>
