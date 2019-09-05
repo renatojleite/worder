@@ -11,7 +11,6 @@ gem 'rails', '5.2.3'
 gem 'redis'
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
-gem 'fullcalendar-rails'
 gem 'geocoder'
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass', '~> 5.6.1'
@@ -19,10 +18,14 @@ gem 'sassc-rails'
 gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
+gem 'cloudinary', '~> 1.9.1'
+
 
 group :development do
   gem 'web-console', '>= 3.3.0'
 end
+
+gem 'dotenv-rails', groups: [:development, :test]
 
 group :development, :test do
   gem 'pry-byebug'
@@ -31,4 +34,5 @@ group :development, :test do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'dotenv-rails'
+
 end
