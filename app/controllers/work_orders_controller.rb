@@ -9,6 +9,10 @@ class WorkOrdersController < ApplicationController
     @work_orders = WorkOrder.where(team_leader: user)
   end
 
+  def article_params
+    params.require(:article).permit(:title, :body, :photo)
+  end
+
   def show
   end
 
