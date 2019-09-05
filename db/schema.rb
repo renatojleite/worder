@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 2019_09_04_204243) do
     t.index ["user_id"], name: "index_managers_on_user_id"
   end
 
-  create_table "team_leadersders", force: :cascade do |t|
+  create_table "team_leaders", force: :cascade do |t|
     t.string "team_name"
     t.bigint "user_id"
     t.bigint "manager_id"

@@ -5,7 +5,7 @@ Manager.destroy_all
 TeamLeader.destroy_all
 WorkOrder.destroy_all
 Category.destroy_all
-Status.destroy_all
+# Status.destroy_all
 
 
 puts "Creating CATEGOIRES Work Orders..."
@@ -14,11 +14,11 @@ categories.each do |categorie|
   Category.create(category_name: categorie)
 end
 
-puts "Creating STATUS Work Orders..."
-statuses = ["Realizado", "Não foi possível finalizar"]
-statuses.each do |status|
-  Status.create(status_name: status)
-end
+# puts "Creating STATUS Work Orders..."
+# statuses = ["Realizado", "Não foi possível finalizar"]
+# statuses.each do |status|
+#   Status.create(status_name: status)
+# end
 
 puts "Creating users..."
 user = User.create!(name:"nome-user1", email: "user@mail.com", password: "123456" )
