@@ -4,7 +4,7 @@
 
 
   <!-- INFOS INICIAIS -->
-  <%= f.association :team_leader, label: "Alocar a equipe:" %>
+  <%= f.association :team_leader, label: "Alocar a equipe:", label_method: :team_name %>
   <%#= f.association :team_leader, collection: TeamLeader.team_name %>
   <%#= f.association :team_leader, label_method: :leader_name, value_method: :id, include_blank: false %>
 
