@@ -20,12 +20,9 @@ gem 'uglifier'
 gem 'webpacker'
 gem 'cloudinary', '~> 1.9.1'
 
-
 group :development do
   gem 'web-console', '>= 3.3.0'
 end
-
-gem 'dotenv-rails', groups: [:development, :test]
 
 group :development, :test do
   gem 'pry-byebug'
