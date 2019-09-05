@@ -10,10 +10,7 @@ class Manager::WorkOrdersController < ApplicationController
   end
 
   def show
-    # @work_order = WorkOrder.geocoded
-
-    @markers = {lat: @work_order.latitude, lng: @work_order.longitude}
-
+    @marker = { lat: @work_order.latitude, lng: @work_order.longitude }
   end
 
   def create
