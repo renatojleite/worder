@@ -1,24 +1,74 @@
 <div class="wrapper">
-  <%= render 'sidebar' %>
 
-<div class="container-full content-master">
-  <div class="container">
-    <div class="row">
-      <div class="col">
-        <div
-          id="map"
-          style="width: 100%;
-          height: 300px;
-          margin-left: 100px;"
-          data-marker="<%= @marker.to_json %>"
-          data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+<div id="content">
+  <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light"> -->
+      <button type="button" id="sidebarCollapse" class="btn btn-info">
+      <i class="fas fa-align-left"></i>
+      <span>Toggle Sidebar</span>
+      </button>
+  <!-- </nav> -->
+  <%= render 'sidebar' %>
+</div>
+
+<div class="container">
+  <div class="row d-flex justify-content-around" id="rowTopTop">
+    <div class="col-6">
+      <h4>Operacoes / Detalhes</h4>
+    </div>
+    <div class="col-4">
+      <select name="due_date">
+        <option ><%= @work_order.due_date %></option>
+      </select>
+      <br><br>
+      <h2 id="h2"><%= status_name(@work_order.status) %></h2>
+    </div>
+  </div>
+  <div class="row d-flex align-items-center" id="rowTop">
+    <div class="col-6">
+      <img src="https://i1.wp.com/www.guiaestudo.com.br/wp-content/uploads/2019/01/grafico-pizza.jpg" alt="grafico-pizza" style="width: 230px" id="pizza">
+    </div>
+    <div class="col-4">
+      <img src="https://s5.static.brasilescola.uol.com.br/img/2018/06/exemplo-de-grafico-de-linhas.jpg" alt="grafico escala">
+    </div>
+  </div>
+
+  <div class="row d-flex align-items-center" id="rowBottom">
+    <div class="col-8">
+    <h2>Detalhes da Operacao</h2>
+      <div class="row">
+        <div class="card justify-content-center" id="a">
+          <h3><%= @work_order.name %></h3>
+          <h4>Prazo de Entrega: <p><%= @work_order.due_date %></p></h4>
+          <h4>Prioridade: <%= priority_level(@work_order.priority) %></h4>
         </div>
+      </div>
+      <div class="row">
+        <div class="card justify-content-center" id="b">
+          <h4>Status: <%= status_name(@work_order.status) %></h4>
+        </div>
+      </div>
+      <div class="row">
+        <div class="card justify-content-center" id="c">
+          <p><h3>Descrição:</h3> <%= @work_order.description %></</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-2">
+        <div class="photo">
+          <%= cl_image_tag @work_order.photo, height: 180, width: 370, crop: :fill %>
+          <%= @work_order.report %>
+          <br><br>
+          <%= cl_image_tag @work_order.photo, height: 180, width: 370, crop: :fill %>
+          <%= @work_order.report %>
+        </div>
+      <div
+      id="map"
+      style="width: 280%;
+      height: 280px;"
+      data-marker="<%= @marker.to_json %>"
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
       </div>
     </div>
   </div>
 </div>
-
-
-<%= cl_image_tag @work_order.photo, height: 300, width: 400, crop: :fill %>
-<%= @work_order.report %>
-<%#= cl_image_path @work_order.photo_url, height: 300, width: 400, crop: :fill %>
