@@ -21,9 +21,4 @@ $(document).ready(function () {
 
 $('.single-item').slick();
 
-Swal.fire(
-  'Good job!',
-  'You clicked the button!',
-  'success'
-)
 

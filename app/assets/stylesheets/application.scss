@@ -8,7 +8,7 @@
 @import "bootstrap/scss/bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
-@import 'mapbox-gl/dist/mapbox-gl';
+@import "mapbox-gl/dist/mapbox-gl";
 
 // Your CSS partials
 @import "components/index";
@@ -16,5 +16,5 @@
 @import "fullcalendar";
 
 // Carousel
-@import 'slick';
-@import 'slick-theme';
+// @import "slick";
+// @import "slick-theme";
