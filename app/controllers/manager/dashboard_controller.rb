@@ -1,4 +1,6 @@
 class Manager::DashboardController < ApplicationController
+
+
   def index
     # WORK ORDERS - Filtros + Show all for index
     @work_orders_full = WorkOrder.all
@@ -20,5 +22,13 @@ class Manager::DashboardController < ApplicationController
       @team_leaders = TeamLeader.all
     end
 
+    # # MAP
+    @markers = @work_orders_full.map do |order|
+      {
+        lat: order.latitude,
+        lng: order.longitude,
+        image_url: helpers.asset_url('shovel_marcador.png')
+      }
+    end
   end
 end
