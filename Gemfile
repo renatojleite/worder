@@ -16,6 +16,7 @@ gem 'autoprefixer-rails'
 gem 'font-awesome-sass', '~> 5.6.1'
 gem 'sassc-rails'
 gem 'simple_form'
+gem "jquery-slick-rails"
 gem 'uglifier'
 gem 'webpacker'
 gem 'cloudinary', '~> 1.9.1'
