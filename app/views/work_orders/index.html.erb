@@ -14,27 +14,33 @@
   </div>
 </div>
 
+<br>
+<br>
 
+The faster and easyer way to gerence yor works
+
+<br>
+<br>
+<br>
 
 
 <div class="container">
-  <div class="card-trip">
-    <div class="card-trip-infos">
-      <div>
-         <ul>
-          <% @work_orders.each do |work_order| %>
-          <br>
-            <li>
-              <%= link_to "#{work_order.name}", work_order_path(work_order), :class => "btn - btn-primary" %>
-            </li>
-          <br>
-          <% end %>
-        </ul>
-        <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
+  <div class="single-item text-center" >
+    <% @work_orders.each do |work_order| %>
+      <div class="card col-md-4" style="width: 18rem;">
+        <img src="https://images.unsplash.com/photo-1551711975-585d41fad0c2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title"><%= work_order.name %></h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+           <%= link_to "view", work_order_path(work_order), :class => "btn - btn-primary" %>
+        </div>
       </div>
-    </div>
+    <% end %>
   </div>
 </div>
 
+<br>
+<br>
 
+<div class="text-center"><%= link_to 'Log out', destroy_user_session_path, method: :delete %></div>
 

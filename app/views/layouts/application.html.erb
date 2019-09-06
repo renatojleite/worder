@@ -7,6 +7,12 @@
     <title>TODO</title>
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
+    <% if content_for?(:head) %>
+      <%= yield(:head) %>
+    <% end %>
+    <% content_for :head do %>
+      <meta name="turbolinks-cache-control" content="no-cache">
+    <% end %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
