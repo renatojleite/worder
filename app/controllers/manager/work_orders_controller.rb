@@ -28,7 +28,7 @@ class Manager::WorkOrdersController < ApplicationController
   def create
     @work_order = WorkOrder.new(work_order_params)
     if @work_order.save
-      redirect_to manager_work_orders_path
+      redirect_to manager_dashboard_index_path
     else
       render 'new'
     end

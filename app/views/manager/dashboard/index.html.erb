@@ -18,6 +18,7 @@
       <div class="col-6">
       <!-- Inicio da 1º coluna -->
             <!-- Box Status -->
+            <div class="m-2">
             <div class="row justify-content-center">
             <div class="card text-white bg-secondary m-1" style="width: 120px;">
               <div class="card-header text-center">Total</div>
@@ -37,10 +38,12 @@
                 <h5 class="card-title text-center"><%= @work_orders.where(status: 3).count %></h5>
             </div>
             </div>
+            </div>
+
       </div>
 
       <!-- Calendar -->
-      <div class="card">
+      <div class="card m-2">
       <div class="card-header" style="font-size: 12px;">WO-calendário</div>
       <p></p>
       <div id="calendar" class="card-dashboard-header" data-event="<%= @events.to_json %>" >
@@ -54,9 +57,9 @@
       <!-- Inicio da 2º coluna -->
 
       <!-- MAP -->
-      <div class="card"
+      <div class="card m-2"
         id="map"
-        style="width: 100%; height: 300px;"
+        style="width: 97%; height: 300px;"
         data-markers="<%= @markers.to_json %>"
         data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
       </div>
@@ -64,7 +67,7 @@
 
 
       <!-- Filtros Work Orders -->
-      <div class="card">
+      <div class="card m-2">
       <div class="card-header" style="font-size: 12px;">WO-index</div>
       <div class="card-body">
               <%= form_tag manager_work_orders_path, method: :get do %>
@@ -76,6 +79,8 @@
                 <%= submit_tag "Search", class: "btn btn-secondary" %>
                 <% end %>
               </div>
+
+              <%= link_to "Limpar", manager_dashboard_index_path, class: "btn btn-flat" %>
 
 
               <span class="card-text d-flex" style="font-size: 10px;">
@@ -106,7 +111,7 @@
                       <% end %>
                     </select>
 
-                    <input type="submit" value="Submit">
+                    <input type="submit" value="Filtrar" class="btn btn-flat" >
                   </form>
 
 
