@@ -21,7 +21,7 @@
               <p>WO-index</p>
               <%= link_to "Criar Ordem de Serviço", new_manager_work_order_path, class: "btn btn-primary my-2" %>
               </div>
-        
+
                 <div class="work-order-filters-inline">
                           <div class="work-order-filter-destak my-3">
                           <p> Buscar pelo time </p>
@@ -85,7 +85,7 @@
                   <ul>
                     <% @work_orders.each do |order| %>
                     <li>
-                    <%= link_to "#{order.name}", work_order_path(order) %>
+                    <%= link_to "#{order.name}", manager_work_order_path(order) %>
                     </li>
                     <% end %>
                   </ul>
