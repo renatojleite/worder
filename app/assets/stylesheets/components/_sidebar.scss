@@ -5,6 +5,7 @@
 }
 
 #sidebar {
+    position: fixed;
     min-width: 170px;
     max-width: 170px;
     min-height: 100vh;
@@ -115,14 +116,16 @@ ul ul a {
 }
 
 #sidebarCollapse {
-  position: absolute;
+  position: fixed;
   left: 7px;
   top: 7px;
+  z-index: 2;
 }
 
 
 //
 
 .content-master {
+  margin-left: 150px;
   padding: 50px 50px;
 }

@@ -15,82 +15,78 @@
       <div class="col-12">
       <!-- Inicio da 1º coluna -->
 
-      <!-- Filtros Work Orders -->
       <div>
               <div class="card-dashboard-header">
               <p>WO-index</p>
               <%= link_to "Criar Ordem de Serviço", new_manager_work_order_path, class: "btn btn-primary my-2" %>
               </div>
 
-                <div class="work-order-filters-inline">
-                          <div class="work-order-filter-destak my-3">
-                          <p> Buscar pelo time </p>
-                          <span>
-                          <%= form_tag manager_work_orders_path, method: :get do %>
-                          <%= text_field_tag :query,
-                            params[:query],
-                            class: "form-control",
-                            placeholder: "Find a team" %> </span> <span><%= submit_tag "Search", class: "btn btn-primary" %>
-                          <% end %>
-                          </span>
-                          </div>
+                <!-- Filtros Work Orders -->
+      <div class="card m-2">
+      <div class="card-header" style="font-size: 12px;">WO-index</div>
+      <div class="card-body">
+              <%= form_tag manager_work_orders_path, method: :get do %>
+              <div class="search-form-control form-group">
+                <%= text_field_tag :query,
+                  params[:query],
+                  class: "form-control string required",
+                  placeholder: "Find a team" %>
+                <%= submit_tag "Search", class: "btn btn-secondary" %>
+                <% end %>
+              </div>
 
-                                        <div class="work-order-filter">
-                                        <form action= "work_orders" >
-                                        <select name="team">
-                                          <% @team_leaders.each do |team| %>
-                                            <option value="<%= team.id %>"><%= team.team_name %></option>
-                                          <% end %>
-                                        </select>
-                                        <input type="submit" value="Submit">
-                                        </form>
-                                        </div>
+              <%= link_to "Limpar", manager_work_orders_path, class: "btn btn-flat" %>
 
-                                        <div class="work-order-filter">
-                                        <form action= "work_orders" >
-                                          <select name="priority">
-                                            <% @work_orders_full.pluck(:priority).uniq.each do |work_order| %>
-                                              <option value="<%= work_order %>"><%= priority_level(work_order) %></option>
-                                            <% end %>
-                                          </select>
-                                          <input type="submit" value="Submit">
-                                        </form>
-                                        </div>
 
-                                        <div class="work-order-filter">
-                                        <form action= "work_orders" >
-                                          <select name="status">
-                                            <% @work_orders_full.pluck(:status).uniq.each do |work_order| %>
-                                              <option value="<%= work_order %>"><%= status_name(work_order) %></option>
-                                            <% end %>
-                                          </select>
-                                          <input type="submit" value="Submit">
-                                        </form>
-                                        </div>
 
-                                        <div class="work-order-filter">
-                                        <form action= "work_orders" >
-                                          <select name="due_date">
-                                            <% @work_orders_full.pluck(:due_date).uniq.each do |work_order| %>
-                                              <option value="<%= work_order %>"><%= work_order %></option>
-                                            <% end %>
-                                          </select>
-                                          <input type="submit" value="Submit">
-                                        </form>
-                                        </div>
-                           </div>
+              <span class="card-text d-flex" style="font-size: 10px;">
+                   <form action= "work_orders" >
+                    <select name="team">
+                      <% @team_leaders.each do |team| %>
+                        <option value="<%= team.id %>"><%= team.team_name %></option>
+                      <% end %>
+                    </select>
 
-                <!-- Work Orders index -->
-                <div class="work-order-list">
-                  <ul>
-                    <% @work_orders.each do |order| %>
-                    <li>
-                    <%= link_to "#{order.name}", manager_work_order_path(order) %>
-                    </li>
-                    <% end %>
-                  </ul>
-                </div>
 
+                    <select name="priority">
+                      <% @work_orders_full.pluck(:priority).uniq.each do |work_order| %>
+                        <option value="<%= work_order %>"><%= priority_level(work_order) %></option>
+                      <% end %>
+                    </select>
+
+
+                    <select name="status">
+                      <% @work_orders_full.pluck(:status).uniq.each do |work_order| %>
+                        <option value="<%= work_order %>"><%= status_name(work_order) %></option>
+                      <% end %>
+                    </select>
+
+                    <select name="due_date">
+                      <% @work_orders_full.pluck(:due_date).uniq.each do |work_order| %>
+                        <option value="<%= work_order %>"><%= work_order %></option>
+                      <% end %>
+                    </select>
+
+                    <input type="submit" value="Submit">
+                  </form>
+
+
+            </span>
+
+                  <!-- Work Orders index -->
+                  <div class="card my-3 style="font-size: 11px; padding: 5p" >
+                    <table class="table">
+                      <tbody>
+                        <% @work_orders.each do |order| %>
+                        <tr>
+                          <th scope="row" style="font-size: 11px; padding: 5px;"><%= link_to "#{order.name}", manager_work_order_path(order) %></th>
+                        </tr>
+                        <% end %>
+                      </tbody>
+                    </table>
+                  </div>
+          </div>
+          </div>
         </div>
 
       <!-- Final da 1º coluna -->
