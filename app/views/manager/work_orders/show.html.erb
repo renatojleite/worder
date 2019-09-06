@@ -1,24 +1,25 @@
 <div class="wrapper">
   <%= render 'sidebar' %>
 
-<div class="container-full content-master">
-  <div class="container">
-    <div class="row">
-      <div class="col">
-        <div
-          id="map"
-          style="width: 100%;
-          height: 300px;
-          margin-left: 100px;"
-          data-marker="<%= @marker.to_json %>"
-          data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-        </div>
-      </div>
-    </div>
+
+<div class="container-full d-flex">
+  <div class="box"> <h1>Detalhes da operação:</h1>
+  <h2><%= @work_order.name %></h2>
+  <h3>Status: <%= status_name(@work_order.status) %></h3>
+  <h3>Prioridade: <%= priority_level(@work_order.priority) %></h3>
+  <h3>Prazo de Entrega: <%= @work_order.due_date %></h3>
+  <h3>Descrição: <%= @work_order.description %></h3>
+  <div
+    id="map"
+    style="width: 200%;
+    height: 300px;
+    margin-left: 180px;"
+    data-marker="<%= @marker.to_json %>"
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
 </div>
 
 
 <%= cl_image_tag @work_order.photo, height: 300, width: 400, crop: :fill %>
 <%= @work_order.report %>
-<%#= cl_image_path @work_order.photo_url, height: 300, width: 400, crop: :fill %>
+
