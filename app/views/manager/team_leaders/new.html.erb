@@ -1,1 +1,45 @@
-<%= render 'form' %>
+<div class="wrapper">
+  <div id="content">
+  <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light"> -->
+      <button type="button" id="sidebarCollapse" class="btn btn-info">
+      <i class="fas fa-align-left"></i>
+      <span>Toggle Sidebar</span>
+      </button>
+  <!-- </nav> -->
+  <%= render 'sidebar' %>
+  </div>
+
+
+  <div class="container-full   content-master">
+    <div class="row">
+
+
+      <div class="col-6">
+      <!-- Inicio da 1º coluna -->
+        <h1>Teamsssssss</h1>
+        <!-- Form Team New -->
+        <%= render 'form' %>
+
+
+        <%= link_to 'Cancelar', manager_team_leaders_path %>
+        <br>
+        <br>
+        <br>
+        <div>
+          <% @team_leaders.each do |manager_team_leader| %>
+          <%= link_to manager_team_leader.team_name, edit_manager_team_leader_path(manager_team_leader) %>
+          <br>
+        <% end %>
+
+        <%= form_tag manager_team_leaders_path, method: :get do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "Find a team" %>
+        <%= submit_tag "Search", class: "btn btn-primary" %>
+        <% end %>
+
+    </div>
+    </div>
+  </div>
+</div>

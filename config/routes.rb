@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   namespace :manager do
     resources :work_orders
     resources :team_leaders
+    resources :dashboard, only: :index
   end
+
 end
 
