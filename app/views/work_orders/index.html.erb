@@ -15,15 +15,26 @@
 </div>
 
 
-<ul>
-  <% @work_orders.each do |work_order| %>
-    <li>
-      <%= link_to "#{work_order.name}", work_order_path(work_order), :class => "btn - btn-primary" %>
-    </li>
-  <% end %>
-</ul>
-<%= link_to 'Log out', destroy_user_session_path, method: :delete %>
 
+
+<div class="container">
+  <div class="card-trip">
+    <div class="card-trip-infos">
+      <div>
+         <ul>
+          <% @work_orders.each do |work_order| %>
+          <br>
+            <li>
+              <%= link_to "#{work_order.name}", work_order_path(work_order), :class => "btn - btn-primary" %>
+            </li>
+          <br>
+          <% end %>
+        </ul>
+        <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 

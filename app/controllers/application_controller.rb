@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
     if current_user.manager.nil?
       work_orders_path
     else
-      manager_work_orders_path
+      manager_dashboard_index_path
     end
   end
 

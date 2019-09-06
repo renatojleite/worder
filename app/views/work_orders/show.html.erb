@@ -1,7 +1,9 @@
+
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <a class="navbar-brand" >
+  <a class="navbar-brand" href="work_orders" >
     <img src="https://www.shareicon.net/data/128x128/2016/04/10/747355_man_512x512.png" />
   </a>
+
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
@@ -17,11 +19,18 @@
 
 <br>
 <br>
-<div class="text-center">
-    <h1> Work Order <%= @work_order.name %> </h1>
-    <h3>Endereço <%= @work_order.address%> </h3>
-    <h3>Priority:  <%= @work_order.priority %></h3>
+
+<div class="container">
+  <h1 align="center"> Work Order </h1>
+
+      <h1 align="center"><%= @work_order.name %></h1>
+      <h2 align="center"><%= @work_order.description %></h2>
+      <h2 align="center"><%= @work_order.address%></h2>
+      <h3 align="center">Endereço <%= @work_order.address%> </h3>
+      <h3 align="center">Priority:  <%= @work_order.priority %></h3>
 </div>
+
+<br>
 <br>
 
 <div class="container ">
