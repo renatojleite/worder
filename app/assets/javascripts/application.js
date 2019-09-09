@@ -7,6 +7,9 @@
 //= require cocoon
 
 
+//= require chartkick
+//= require Chart.bundle
+
 $('#calendar').fullCalendar({
   events: $('#calendar').data('event')
 });

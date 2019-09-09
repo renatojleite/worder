@@ -30,5 +30,10 @@ class Manager::DashboardController < ApplicationController
         image_url: helpers.asset_url('shovel_marcador.png')
       }
     end
+
+    @chart = WorkOrder.group(:status).count
+    @chart.keys.each do |key|
+      @chart[['Aberto', 'Em andamento', 'Concluído'][key - 1]] = @chart.delete key
+    end
   end
 end
