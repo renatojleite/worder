@@ -23,11 +23,24 @@
   <!-- DETALHES -->
   <%= f.input :description, label: "Detalhes sobre o serviço:", as: :text %>
 
+    <h3>Tasks</h3>
+    <div id='tasks'>
+    <%= f.simple_fields_for :tasks do |task| %>
+    <%= render 'task_fields', :f => task %>
+        <% end %>
+
+     <%#= render 'task_fields', f: task %>
+    <div class='links'>
+    <%= link_to_add_association 'add task', f, :tasks %>
+    </div>
+    </div>
+
 
   <!-- USER FORM -->
   <%#= f.input :description, as: :text, label: "USER - Observação sobre o serviço realizado" %>
 
 
   <%= f.button :submit, class: 'btn btn-primary' %>
+
 
 <% end %>

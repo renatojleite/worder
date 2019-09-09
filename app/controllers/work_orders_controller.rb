@@ -42,6 +42,6 @@ class WorkOrdersController < ApplicationController
   end
 
   def work_order_params
-    params.require(:work_order).permit(:priority, :address, :due_time, :due_date, :description, :completion_date, :start_photo, :end_photo, :team_leader_id, :report, :status, :photo)
+    params.require(:work_order).permit(:priority, :address, :due_time, :due_date, :description, :completion_date, :start_photo, :end_photo, :team_leader_id, :report, :status, :photo, tasks_attributes: [:id, :description, :done])
   end
 end
