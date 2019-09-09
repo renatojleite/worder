@@ -22,7 +22,10 @@ class Manager::WorkOrdersController < ApplicationController
   def show
 
     @marker = { lat: @work_order.latitude, lng: @work_order.longitude, image_url: helpers.asset_url('shovel_marcador.png') }
-
+    @chart = WorkOrder.group(:status).count
+    @chart.keys.each do |key|
+      @chart[['Aberto', 'Em andamento', 'Concluído'][key - 1]] = @chart.delete key
+    end
   end
 
   def create

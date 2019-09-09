@@ -5,6 +5,9 @@
 //= require jquery.slick
 //= require_tree .
 
+//= require chartkick
+//= require Chart.bundle
+
 $('#calendar').fullCalendar({
   events: $('#calendar').data('event')
 });
