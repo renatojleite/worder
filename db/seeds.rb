@@ -49,6 +49,11 @@ WorkOrder.create!(team_leader: team_leader, name: "job6", priority: 1, status: 2
 WorkOrder.create!(team_leader: team_leader2, name: "job7", priority: 2, status: 1, due_date: DateTime.new(2010,2,3,4,5,6), address: "Rua da Cantareira, 315", description: descricao)
 puts "Work order created!!"
 
+# puts "Naming Priority"
+# priority(1) = "Aberto"
+# priority(2) = "Em andamento"
+# priority(3) = "Realizado"
+
 puts "Users created: #{User.count}"
 puts "Manager created: #{Manager.count}"
 puts "Team leader created: #{TeamLeader.count}"
