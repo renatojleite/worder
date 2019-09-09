@@ -14,8 +14,12 @@
     <div class="row">
         <h4>Team / Edit</h4>
       <div class="col-12">
-        <h1>Edit Team</h1>
-        <%= render 'form' %>
+        <h3>Edit Team</h3>
+        <%= simple_form_for @team_leader, url: manager_team_leader_path do |f| %>
+          <%= f.input :team_name %>
+          <%= f.association :user %>
+          <%= f.button :submit, class: 'btn btn-primary' %>
+        <% end %>
         <%= link_to 'Cancelar', manager_team_leaders_path %>
       </div>
     </div>
