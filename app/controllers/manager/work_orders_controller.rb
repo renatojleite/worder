@@ -7,10 +7,10 @@ class Manager::WorkOrdersController < ApplicationController
     @work_orders = @work_orders_full
 
     @work_orders = WorkOrder.where("name ILIKE ?", "%#{params[:query]}%") if params[:query].present?
-    @work_orders = WorkOrder.where(team_leader_id: params[:team]) if params[:team].present?
-    @work_orders = WorkOrder.where(priority: params[:priority]) if params[:priority].present?
-    @work_orders = WorkOrder.where(status: params[:status]) if params[:status].present?
-    @work_orders = WorkOrder.where(due_date: params[:due_date]) if params[:due_date].present?
+    @work_orders = @work_orders.where(team_leader_id: params[:team]) if params[:team].present?
+    @work_orders = @work_orders.where(priority: params[:priority]) if params[:priority].present?
+    @work_orders = @work_orders.where(status: params[:status]) if params[:status].present?
+    @work_orders = @work_orders.where(due_date: params[:due_date]) if params[:due_date].present?
 
     @events = WorkOrder.where.not(due_date: nil).map { |w| { title: w.name, start: w.due_date } }
   end
@@ -20,9 +20,11 @@ class Manager::WorkOrdersController < ApplicationController
   end
 
   def show
-
     @marker = { lat: @work_order.latitude, lng: @work_order.longitude, image_url: helpers.asset_url('shovel_marcador.png') }
-
+    @chart = WorkOrder.group(:status).count
+    @chart.keys.each do |key|
+      @chart[['Aberto', 'Em andamento', 'Concluído'][key - 1]] = @chart.delete key
+    end
   end
 
   def create

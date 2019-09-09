@@ -3,7 +3,7 @@
   <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light"> -->
       <button type="button" id="sidebarCollapse" class="btn btn-info">
       <i class="fas fa-align-left"></i>
-      <span>Toggle Sidebar</span>
+      <span></span>
       </button>
   <!-- </nav> -->
   <%= render 'sidebar' %>
@@ -25,12 +25,19 @@
   <div class="row d-flex align-items-center" id="rowTop">
     <div class="col-6">
       <div class="card p-2">
-      <img src="https://i1.wp.com/www.guiaestudo.com.br/wp-content/uploads/2019/01/grafico-pizza.jpg" alt="grafico-pizza" style="width: 230px" id="pizza">
+        <%= pie_chart @chart %>
       </div>
     </div>
     <div class="col-6">
-      <div class="card p-2">
-      <img src="https://s5.static.brasilescola.uol.com.br/img/2018/06/exemplo-de-grafico-de-linhas.jpg" alt="grafico escala">
+      <div class="card p-2 show-card-chart">
+        <%= timeline [
+          ["Gerente", "2019-01-01", "2019-01-02"],
+          ["Pré-visita", "2019-01-02", "2019-01-04"],
+          ["Execução", "2019-01-05", "2019-01-12"],
+          ["Fase-01", "2019-01-06", "2019-01-08"],
+          ["Fase-02", "2019-01-08", "2019-01-10"],
+          ["Fase-03", "2019-01-11", "2019-01-12"]
+        ] %>
       </div>
     </div>
   </div>

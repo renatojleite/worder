@@ -40,13 +40,13 @@ puts "Team leader created!!"
 descricao = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam metus purus, hendrerit sit amet porttitor at, ornare nec ligula. Morbi nec pulvinar nulla. Aliquam non neque rutrum, pharetra purus sed, feugiat mi. Mauris non dignissim magna, vel interdum diam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce ex neque, hendrerit nec pulvinar sed, hendrerit ut orci. Nam urna sem, laoreet vel metus non, rhoncus dapibus odio. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Suspendisse sed vulputate nunc. Duis dictum ante quis tortor dictum, sed placerat turpis pellentesque. Curabitur efficitur arcu et neque tempus scelerisque. Phasellus sagittis gravida venenatis. Integer quis dignissim enim. Nunc sed pretium orci, ut mattis tortor."
 
 puts "Creating work order"
-WorkOrder.create!(team_leader: team_leader, name: "job1", priority: 1, status: 2, due_date: DateTime.new(2001,2,3,4,5,6), address: "Avenida Brigadeiro Faria Lima, 3400, sao paulo", description: descricao)
-WorkOrder.create!(team_leader: team_leader2, name: "job2", priority: 1, status: 3, due_date: DateTime.new(2001,2,3,4,5,6), address: "Avenida Chucri Zaidan, 900, sao paulo", description: descricao)
-WorkOrder.create!(team_leader: team_leader, name: "job3", priority: 3, status: 1, due_date: DateTime.new(2001,2,3,4,5,6), address: "Alameda Joaquim Eugenio de Lima, 844, sao paulo", description: descricao)
-WorkOrder.create!(team_leader: team_leader, name: "job4", priority: 2, status: 2, due_date: DateTime.new(2001,2,3,4,5,6), address: "Rua Capote Valente, 222, sao paulo", description: descricao)
-WorkOrder.create!(team_leader: team_leader2, name: "job5", priority: 3, status: 3, due_date: DateTime.new(2010,2,3,4,5,6), address: "Avenida paulista, 2000, sao paulo", description: descricao)
-WorkOrder.create!(team_leader: team_leader, name: "job6", priority: 1, status: 2, due_date: DateTime.new(2010,2,3,4,5,6), address: "Rua Verbo Divino, 1784, sao paulo", description: descricao)
-WorkOrder.create!(team_leader: team_leader2, name: "job7", priority: 2, status: 1, due_date: DateTime.new(2010,2,3,4,5,6), address: "Rua da Cantareira, 315, sao paulo", description: descricao)
+WorkOrder.create!(team_leader: team_leader, name: "job1", priority: 1, status: 2, due_date: DateTime.new(2019,2,3,4,5,6), address: "Avenida Brigadeiro Faria Lima, 3400, sao paulo", description: descricao)
+WorkOrder.create!(team_leader: team_leader2, name: "job2", priority: 1, status: 3, due_date: DateTime.new(2019,3,3,4,5,1), address: "Avenida Chucri Zaidan, 900, sao paulo", description: descricao)
+WorkOrder.create!(team_leader: team_leader, name: "job3", priority: 3, status: 1, due_date: DateTime.new(2019,4,3,4,5,2), address: "Alameda Joaquim Eugenio de Lima, 844, sao paulo", description: descricao)
+WorkOrder.create!(team_leader: team_leader, name: "job4", priority: 2, status: 2, due_date: DateTime.new(2019,5,3,4,5,3), address: "Rua Capote Valente, 222, sao paulo", description: descricao)
+WorkOrder.create!(team_leader: team_leader2, name: "job5", priority: 3, status: 3, due_date: DateTime.new(2019,6,3,4,5,4), address: "Avenida paulista, 2000, sao paulo", description: descricao)
+WorkOrder.create!(team_leader: team_leader, name: "job6", priority: 1, status: 2, due_date: DateTime.new(2019,7,3,4,5,5), address: "Rua Verbo Divino, 1784, sao paulo", description: descricao)
+WorkOrder.create!(team_leader: team_leader2, name: "job7", priority: 2, status: 1, due_date: DateTime.new(2019,8,3,4,5,6), address: "Rua da Cantareira, 315, sao paulo", description: descricao)
 puts "Work order created!!"
 
 puts "Users created: #{User.count}"
