@@ -1,46 +1,99 @@
-<%= simple_form_for @work_order, url: manager_work_orders_path do |f| %>
-  <!--  NOVO JOB -->
-  <%= f.input :name, label: "Novo - Ordem de Serviço" %>
+<div class="form">
+  <div class="row">
+  <div class="col-6">
+  <div class="row">
+    <div class="col-4 px-3">
+    <%= simple_form_for @work_order, url: manager_work_orders_path do |f| %>
+    <!--  NOVO JOB -->
+    <h4 class="px-3"> Novo Job:</h4>
+    </div>
+    <div class="col-8 px-4">
+    <%= f.input :name, placeholder: 'Nome da WO', label: false %>
+    </div>
+  </div>
+
+  <div class="row p-3">
+    <div class="col-6">
+    <!-- INFOS INICIAIS -->
+    <%= f.association :team_leader, label: "Alocar a equipe:", label_method: :team_name,  include_blank: false %>
+    <%#= f.association :team_leader, collection: TeamLeader.team_name %>
+    <%#= f.association :team_leader, label_method: :leader_name, value_method: :id, include_blank: false %>
+    </div>
+
+    <div class="col-3">
+    <%= f.input :priority, label: "Prioridade:", collection: { Baixo: 1, Médio: 2, Alto: 3 }, include_blank: false %>
+    </div>
+    <div class="col-3">
+    <%= f.input :status, label: "Status :", collection: { Aberto: 1, "Em Andamento": 2, Concluido: 3 }, include_blank: false %>
+    </div>
+  </div>
 
 
-  <!-- INFOS INICIAIS -->
-  <%= f.association :team_leader, label: "Alocar a equipe:", label_method: :team_name %>
-  <%#= f.association :team_leader, collection: TeamLeader.team_name %>
-  <%#= f.association :team_leader, label_method: :leader_name, value_method: :id, include_blank: false %>
+  <h4 class="p-3">Localização</h4>
+  <div class="card p-3">
+  <div class="row">
+  <div class="col-4">
+    <p>Local da operação:</p>
+  </div>
+  <div class="col-8">
+  <%= f.input :address, label: "Endereço:", placeholder: 'Inserir endereço Google Maps',label: false %>
+  </div>
+  </div>
+  </div>
 
-  <%= f.input :priority, label: "Prioridade:", collection: { Baixo: 1, Médio: 2, Alto: 3 } %>
-  <%= f.input :status, label: "Status :", collection: { Aberto: 1, "Em Andamento": 2, Concluido: 3 } %>
-  <%#= f.association :status %>
-  <%#= f.association :region %>
-  <%= f.input :address, label: "Endereço:", placeholder: 'Inserir endereço Google Maps' %>
-
-
+  <h4 class="p-3">Datas e Prazo:</h4>
+  <div class="card p-3">
+    <div class="row">
+  <div class="col-4">
+    <p>Prazo do serviço:</p>
+  </div>
+  <div class="col-8">
   <!-- PRAZO E HR -->
-  <%= f.input :due_date, label: "Data Prazo:", as: :date, start_year: Date.today.year, end_year: Date.today.year + 2, order: [:day, :month, :year] %>
-  <%= f.input :due_time, label: "Horário aproximado:", as: :time %>
+  <%= f.input :due_date, label: "Data Prazo:", as: :date, start_year: Date.today.year, end_year: Date.today.year + 2, order: [:day, :month, :year], label: false %>
+  </div>
+  </div>
+  <div class="row">
+  <div class="col-4">
+    <p>Prazo do serviço:</p>
+  </div>
+  <div class="col-8">
+  <%= f.input :due_time, label: "Horário aproximado:", as: :time, label: false %>
+  </div>
+  </div>
+  </div>
 
-
+  <h4 class="p-3">Descrição do serviço:</h4>
+  <div class="card p-3">
+    <div class="row">
+  <div class="col-4">
+    <p>Descreva os detalhes:</p>
+  </div>
+  <div class="col-8">
   <!-- DETALHES -->
-  <%= f.input :description, label: "Detalhes sobre o serviço:", as: :text %>
+  <%= f.input :description, label: "Detalhes sobre o serviço:", as: :text, label: false %>
+  </div>
+  </div>
+  </div>
+</div>
 
-    <h3>Tasks</h3>
+<div class="col-6">
+  <div>
+    <h4 >Tasks</h4>
     <div id='tasks'>
+      <p>simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI</p>
     <%= f.simple_fields_for :tasks do |task| %>
     <%= render 'task_fields', :f => task %>
-        <% end %>
+    <% end %>
 
-     <%#= render 'task_fields', f: task %>
-    <div class='links'>
-    <%= link_to_add_association 'add task', f, :tasks %>
+    <div class='links d-flex justify-content-center'>
+    <%= link_to_add_association '', f, :tasks, class: "fas fa-plus-circle", style: "font-size: 38px; color: #7386D4;" %>
     </div>
     </div>
-
-
-  <!-- USER FORM -->
-  <%#= f.input :description, as: :text, label: "USER - Observação sobre o serviço realizado" %>
-
-
+  </div>
+  <div class='d-flex justify-content-center py-5'>
   <%= f.button :submit, class: 'btn btn-primary' %>
-
-
-<% end %>
+  <% end %>
+  </div>
+</div>
+</div>
+</div>
