@@ -31,50 +31,52 @@
                   params[:query],
                   class: "form-control string required",
                   placeholder: "Find a team" %>
-                <%= submit_tag "Search", class: "btn btn-secondary" %>
+                <%= submit_tag "Filtrar", class: "btn btn-primary" %>
                 <% end %>
               </div>
 
-              <%= link_to "Limpar", manager_work_orders_path, class: "btn btn-flat" %>
+              <div class="text-left my-2"> <%= link_to "Limpar", manager_work_orders_path, class: "btn btn-primary btn-sm" %></div>
 
 
 
               <span class="card-text d-flex" style="font-size: 10px;">
                    <form action= "work_orders" >
-                    <select name="team">
-                      <% @team_leaders.each do |team| %>
-                        <option value="<%= team.id %>"><%= team.team_name %></option>
-                      <% end %>
-                    </select>
+                    <div class="row" style="justify-content: center;">
+                      <div class="col-12 col-sm-6 d-flex" style="max-width: none;">
+                        <select name="team">
+                          <% @team_leaders.each do |team| %>
+                            <option value="<%= team.id %>"><%= team.team_name %></option>
+                          <% end %>
+                        </select>
 
+                        <select name="priority">
+                          <% @work_orders_full.pluck(:priority).uniq.each do |work_order| %>
+                            <option value="<%= work_order %>"><%= priority_level(work_order) %></option>
+                          <% end %>
+                        </select>
 
-                    <select name="priority">
-                      <% @work_orders_full.pluck(:priority).uniq.each do |work_order| %>
-                        <option value="<%= work_order %>"><%= priority_level(work_order) %></option>
-                      <% end %>
-                    </select>
+                        <select name="status">
+                          <% @work_orders_full.pluck(:status).uniq.each do |work_order| %>
+                            <option value="<%= work_order %>"><%= status_name(work_order) %></option>
+                          <% end %>
+                        </select>
 
+                        <select name="due_date">
+                          <% @work_orders_full.pluck(:due_date).uniq.each do |work_order| %>
+                            <option value="<%= work_order %>"><%= work_order %></option>
+                          <% end %>
+                        </select>
+                       <input type="submit" value="Localizar" class="btn btn-primary btn-sm"; >
 
-                    <select name="status">
-                      <% @work_orders_full.pluck(:status).uniq.each do |work_order| %>
-                        <option value="<%= work_order %>"><%= status_name(work_order) %></option>
-                      <% end %>
-                    </select>
-
-                    <select name="due_date">
-                      <% @work_orders_full.pluck(:due_date).uniq.each do |work_order| %>
-                        <option value="<%= work_order %>"><%= work_order %></option>
-                      <% end %>
-                    </select>
-
-                    <input type="submit" value="Submit">
+                    </div>
                   </form>
+
 
 
             </span>
 
                   <!-- Work Orders index -->
-                  <div class="card my-3 text-center" style="font-size: 11px; padding: 5px" >
+                  <div class="card my-3" style="font-size: 11px; padding: 5px" >
                    <table class="table table-borderless table-hover table-sm">
                       <thead class="thead-light">
                         <tr>
