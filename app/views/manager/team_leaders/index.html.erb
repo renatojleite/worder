@@ -1,4 +1,7 @@
-<div class="wrapper">
+
+
+<div class="conteiner">   <!-- Igual ao d-flex -->
+
   <div id="content">
   <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light"> -->
       <button type="button" id="sidebarCollapse" class="btn btn-info">
@@ -9,34 +12,56 @@
   <%= render 'sidebar' %>
   </div>
 
-
-  <div class="container-full   content-master">
+  <div class="container-full content-master">
     <div class="row">
-
-
-      <div class="col-6">
+      <div class="col-8 offset-2">
       <!-- Inicio da 1º coluna -->
 
-        <h1>Teamsssssss</h1>
-        <%= link_to 'New Team', new_manager_team_leader_path %>
-        <br>
-        <br>
-        <br>
-        <div>
-          <% @team_leaders.each do |manager_team_leader| %>
-          <%= link_to manager_team_leader.team_name, edit_manager_team_leader_path(manager_team_leader) %>
-          <br>
-        <% end %>
+      <div>
+              <div class="card-dashboard-header">
+              <p class="d-flex justify-content-center">
+              <%= link_to "Criar Ordem de Serviço", new_manager_team_leader_path, class: "btn btn-primary my-2" %></p>
+              </div>
 
-        <%= form_tag manager_team_leaders_path, method: :get do %>
-        <%= text_field_tag :query,
-          params[:query],
-          class: "form-control",
-          placeholder: "Find a team" %>
-        <%= submit_tag "Search", class: "btn btn-primary" %>
-        <% end %>
+                <!-- Filtros Work Orders -->
+      <div class="card m-2">
+      <div class="card-header d-flex justify-content-center" style="font-size: 12px;">Teams-index</div>
+      <div class="card-body">
+              <%= form_tag manager_team_leaders_path, method: :get do %>
+              <div class="search-form-control form-group">
+                <%= text_field_tag :query,
+                  params[:query],
+                  class: "form-control string required",
+                  placeholder: "Find a team" %>
+                <%= submit_tag "Search", class: "btn btn-secondary" %>
+                <% end %>
+              </div>
 
-    </div>
-    </div>
-  </div>
+              <%= link_to "Limpar", manager_team_leaders_path, class: "btn btn-flat" %>
+
+                  <!-- Work Orders index -->
+                  <div class="card my-3 text-center" style="font-size: 11px; padding: 5px" >
+                   <table class="table table-borderless table-hover table-sm">
+                      <thead class="thead-light">
+                        <tr>
+                        <th scope="col">Team Name</th>
+                        </tr>
+                      <tbody>
+                        <% @team_leaders.each do |manager_team_leader| %>
+                        <tr>
+                          <th scope="row"><%= link_to manager_team_leader.team_name, edit_manager_team_leader_path(manager_team_leader) %> </th>
+                        </tr>
+                        <% end %>
+                      </tbody>
+                    </table>
+                  </div>
+          </div>
+          </div>
+        </div>
+
+      <!-- Final da 1º coluna -->
+      </div>
+</div>
+</div>
+</div>
 </div>
