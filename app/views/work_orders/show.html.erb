@@ -1,10 +1,6 @@
-
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <a class="navbar-brand"  >
-     <%= link_to "", work_orders_path(@work_order) %>
+  <%= link_to "Voltar", work_orders_path(@work_order) %>
     <img src="https://www.shareicon.net/data/128x128/2016/04/10/747355_man_512x512.png" />
-  </a>
-
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
@@ -18,23 +14,26 @@
   </div>
 </div>
 
+
 <br>
 <br>
 
 <div class="container">
+  <div class="card p-5">
   <h1 align="center"> Work Order </h1>
 
       <h1 align="center"><%= @work_order.name %></h1>
-      <h2 align="center"><%= @work_order.description %></h2>
-      <h2 align="center"><%= @work_order.address%></h2>
-      <h3 align="center">Endereço <%= @work_order.address%> </h3>
       <h3 align="center">Priority:  <%= @work_order.priority %></h3>
+
+      <p align="center"><%= @work_order.description %></p>
 </div>
 
 <br>
 <br>
 
 <div class="container ">
+  <h3 align="center">Endereço <%= @work_order.address%> </h3>
+
   <div
     id="map"
     style="width: 100%;
@@ -44,14 +43,23 @@
   </div>
 </div>
 
-<div class="container-full content-master">
-<br>
-<br>
+<div class="container">
+  <br>
+  <br>
+  <div class="card p-3">
+
     <%= simple_form_for @work_order do |f| %>
     <%= f.input :report %>
     <%= f.input :status, collection: { Aberto: 1, "Em Andamento": 2, Concluido: 3 } %>
     <%= f.input :photo, input_html: { class: 'hidden' }, label_html: { class: 'upload-photo'}, label: ' 📷 Upload a photo', class: "btn-primary" %>
+
+    <div class="m-5">
+    <div class="row justify-content-center">
     <%= f.button :submit, class: "btn btn-primary" %>
     <%= f.input :photo_cache, as: :hidden %>
     <% end %>
+    </div>
+    </div>
+
+  </div>
 </div>

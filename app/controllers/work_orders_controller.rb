@@ -31,7 +31,8 @@ class WorkOrdersController < ApplicationController
   def update
     @work_order.update(work_order_params)
     flash[:alert] = "Atualizado com sucesso"
-    redirect_to work_order_path(@work_order)
+    redirect_to work_orders_path(@work_order)
+
   end
 
   private

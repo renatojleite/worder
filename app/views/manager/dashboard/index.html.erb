@@ -20,22 +20,22 @@
             <!-- Box Status -->
             <div class="m-2">
             <div class="row justify-content-center">
-            <div class="card text-white bg-secondary m-1" style="width: 120px;">
+            <div class="card text-white bg-secondary m-1" style="width: 150px;">
               <div class="card-header text-center">Total</div>
               <div class="card-body">
-                <h5 class="card-title text-center"><%= @work_orders.all.count %></h5>
+                <h5 class="card-title text-center" style="font-size: 28px;"><%= @work_orders.all.count %></h5>
               </div>
             </div>
-            <div class="card text-white bg-info m-1" style="width: 120px;">
+            <div class="card text-white bg-info m-1" style="width: 150px;">
               <div class="card-header text-center">Pendentes</div>
               <div class="card-body">
-                <h5 class="card-title text-center"><%= @work_orders.where(status: 2).count %></h5>
+                <h5 class="card-title text-center" style="font-size: 28px;"><%= @work_orders.where(status: 2).count %></h5>
               </div>
             </div>
-            <div class="card text-white bg-success m-1" style="width: 125px;">
+            <div class="card text-white bg-success m-1" style="width: 150px;">
               <div class="card-header text-center">Realizados</div>
               <div class="card-body">
-                <h5 class="card-title text-center"><%= @work_orders.where(status: 3).count %></h5>
+                <h5 class="card-title text-center" style="font-size: 28px;"><%= @work_orders.where(status: 3).count %></h5>
             </div>
             </div>
             </div>

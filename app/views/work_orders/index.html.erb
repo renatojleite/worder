@@ -14,21 +14,15 @@
   </div>
 </div>
 
-<br>
-<br>
-
-The faster and easyer way to gerence yor works
-
-<br>
-<br>
-<br>
 
 
-<div class="container">
+
+<div class="container my-5">
   <div class="single-item text-center" >
     <% @work_orders.each do |work_order| %>
-      <div class="card col-md-4" style="width: 18rem;">
-        <img src="https://images.unsplash.com/photo-1551711975-585d41fad0c2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80" class="card-img-top" alt="...">
+      <div class="card p-5" style="width: 18rem;">
+        <i class="fab fa-get-pocket" style="font-size: 60px;"></i>
+       <!--  <img src="https://images.unsplash.com/photo-1551711975-585d41fad0c2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80" class="card-img-top" alt="..."> -->
         <div class="card-body">
           <h5 class="card-title"><%= work_order.name %></h5>
           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
