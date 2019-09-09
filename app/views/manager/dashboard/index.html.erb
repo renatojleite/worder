@@ -76,11 +76,11 @@
                   params[:query],
                   class: "form-control string required",
                   placeholder: "Find a team" %>
-                <%= submit_tag "Search", class: "btn btn-secondary" %>
+                <%= submit_tag "Search", class: "btn btn-primary" %>
                 <% end %>
               </div>
 
-              <%= link_to "Limpar", manager_dashboard_index_path, class: "btn btn-flat" %>
+              <%= link_to "Limpar", manager_dashboard_index_path, class: "btn btn-secondary" %>
 
 
               <span class="card-text d-flex" style="font-size: 10px;">
@@ -90,7 +90,6 @@
                         <option value="<%= team.id %>"><%= team.team_name %></option>
                       <% end %>
                     </select>
-
 
                     <select name="priority">
                       <% @work_orders_full.pluck(:priority).uniq.each do |work_order| %>
@@ -111,23 +110,40 @@
                       <% end %>
                     </select>
 
-                    <input type="submit" value="Filtrar" class="btn btn-flat" >
+                    <input type="submit" value="Filtrar" class="btn btn-secondary" >
                   </form>
 
 
             </span>
 
                   <!-- Work Orders index -->
-                  <div class="card my-3 style="font-size: 11px; padding: 5p" >
-                    <table class="table">
-                      <tbody>
-                        <% @work_orders.each do |order| %>
+                  <div class="card my-3 text-center" style="font-size: 11px; padding: 5px;" >
+                    <table class="table table-borderless table-hover table-sm">
+                      <thead class="thead-light">
                         <tr>
-                          <th scope="row" style="font-size: 11px; padding: 5px;"><%= link_to "#{order.name}", manager_work_order_path(order) %></th>
+                        <th scope="col">Work Order</th>
+                        <th scope="col">Prioridade</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Team</th>
                         </tr>
-                        <% end %>
-                      </tbody>
-                    </table>
+                      </thead>
+                        <tbody>
+                          <% @work_orders.each do |order| %>
+                          <tr>
+                            <th scope="row"><%= link_to "#{order.name}", manager_work_order_path(order) %> </th>
+                              <td>  <% if order.priority == 1 %> <p class="btn btn-danger" style="font-size: 10px; padding: 2px 15px; border-radius: 5px;">Alta</p>
+                                <% elsif order.priority == 2 %> <p class="btn btn-warning" style="font-size: 10px; padding: 2px 15px; border-radius: 5px;">Media</p>
+                                <% else %> <p class="btn btn-primary" style="font-size: 10px; padding: 2px 15px; border-radius: 5px;">Baixa</p>
+                                <% end %> </td>
+                              <td> <% if order.status == 1 %> <p class="btn btn-warning" style="font-size: 10px; padding: 2px 15px; border-radius: 5px;">Aberto</p>
+                                <% elsif order.status == 2 %> <p class="btn btn-primary" style="font-size: 10px; padding: 2px 15px; border-radius: 5px;">Em andamento</p>
+                                <% else %> <p class="btn btn-success" style="font-size: 10px; color: white; padding: 2px 15px; border-radius: 5px;">Realizado</p>
+                                <% end %> </td>
+                              <td> <%= order.team_leader.team_name %></td>
+                          </tr>
+                          <% end %>
+                        </tbody>
+                      </table>
                   </div>
           </div>
           </div>

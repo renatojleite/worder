@@ -4,6 +4,8 @@
 //= require fullcalendar/locale-all
 //= require jquery.slick
 //= require_tree .
+//= require cocoon
+
 
 //= require chartkick
 //= require Chart.bundle
