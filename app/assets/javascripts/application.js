@@ -5,20 +5,20 @@
 //= require jquery.slick
 //= require_tree .
 
-// $('#calendar').fullCalendar({
-//   events: $('#calendar').data('event')
-// });
+$('#calendar').fullCalendar({
+  events: $('#calendar').data('event')
+});
 
 
-// $(document).ready(function () {
+$(document).ready(function () {
 
-//     $('#sidebarCollapse').on('click', function () {
-//         $('#sidebarCollapse').removeClass('active-focus')
-//         $('#sidebar').toggleClass('active');
-//     });
-// });
+    $('#sidebarCollapse').on('click', function () {
+        $('#sidebarCollapse').removeClass('active-focus')
+        $('#sidebar').toggleClass('active');
+    });
+});
 
 
-// $('.single-item').slick();
+$('.single-item').slick();
 
 
