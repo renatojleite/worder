@@ -1,2 +1,2 @@
-require("chartkick")
-require("chart.js")
+import "chartkick";
+import "chart.js";
