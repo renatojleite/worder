@@ -65,7 +65,8 @@ class Manager::WorkOrdersController < ApplicationController
                                         :end_photo,
                                         :team_leader_id,
                                         :status,
-                                        :report)
+                                        :report,
+                                        tasks_attributes: [:id, :description, :done, :_destroy])
   end
 
 end

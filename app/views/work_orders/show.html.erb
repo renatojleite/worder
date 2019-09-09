@@ -49,6 +49,20 @@
   <div class="card p-3">
 
     <%= simple_form_for @work_order do |f| %>
+
+    <h3>Tasks</h3>
+    <div id='tasks'>
+    <%= f.simple_fields_for :tasks do |task| %>
+    <%#= render 'task_fields', :f => task %>
+    <div class='nested-fields'>
+        <%= task.object.description %>
+        <%= task.input :done, :as => :boolean %>
+        <%#= link_to_remove_association "remove task", f %>
+    </div>
+
+    <% end %>
+
+
     <%= f.input :report %>
     <%= f.input :status, collection: { Aberto: 1, "Em Andamento": 2, Concluido: 3 } %>
     <%= f.input :photo, input_html: { class: 'hidden' }, label_html: { class: 'upload-photo'}, label: ' 📷 Upload a photo', class: "btn-primary" %>
