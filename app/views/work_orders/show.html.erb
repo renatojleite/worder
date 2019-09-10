@@ -75,12 +75,14 @@
 
     <%= f.input :report %>
     <%= f.input :status, collection: { Aberto: 1, "Em Andamento": 2, Concluido: 3 } %>
-    <%= f.input :photo, input_html: { class: 'hidden' }, label_html: { class: 'upload-photo'}, label: ' 📷 Upload a photo', class: "btn-primary" %>
+    <%= f.input :start_photo, input_html: { class: 'hidden' }, label_html: { class: 'upload-photo'}, label: ' 📷 Upload Start Photo', class: "btn-primary" %>
+    <%= f.input :end_photo, input_html: { class: 'hidden' }, label_html: { class: 'upload-photo'}, label: ' 📷 Upload End Photo', class: "btn-primary" %>
 
     <div class="m-5">
     <div class="row justify-content-center">
     <%= f.button :submit, class: "btn btn-primary" %>
-    <%= f.input :photo_cache, as: :hidden %>
+    <%= f.input :start_photo_cache, as: :hidden %>
+    <%= f.input :end_photo_cache, as: :hidden %>
     <% end %>
     </div>
     </div>
