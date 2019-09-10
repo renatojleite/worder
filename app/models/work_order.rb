@@ -8,7 +8,6 @@ class WorkOrder < ApplicationRecord
   geocoded_by :address
   validates :name, uniqueness: true
   after_validation :geocode, if: :will_save_change_to_address?
-  mount_uploader :photo, PhotoUploader
-
-
+  mount_uploader :start_photo, PhotoUploader
+  mount_uploader :end_photo, PhotoUploader
 end
