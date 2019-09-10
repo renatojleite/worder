@@ -29,6 +29,7 @@ class Manager::WorkOrdersController < ApplicationController
 
   def create
     @work_order = WorkOrder.new(work_order_params)
+    # raise
     if @work_order.save
       redirect_to manager_dashboard_index_path
     else
@@ -69,6 +70,7 @@ class Manager::WorkOrdersController < ApplicationController
                                         :status,
                                         :report,
                                         tasks_attributes: [:id, :description, :done, :_destroy])
+
   end
 
 end
