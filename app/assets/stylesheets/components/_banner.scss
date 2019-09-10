@@ -1,0 +1,42 @@
+.banner {
+  background-size: cover;
+  background-position: center;
+  padding: 50px 0;
+  min-height: 100vh;
+}
+
+.banner h1 {
+  margin: 0;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-size: 60px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 120px;
+}
+
+.banner p {
+  font-size: 30px;
+  color: white;
+  opacity: .8;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  text-align: center;
+  margin-top: 20px;
+}
+
+.btn-ghost {
+  color: white;
+  border: 5px solid white;
+  padding: 8px 24px;
+  border-radius: 50px;
+  font-weight: bold;
+  opacity: 0.6;
+  text-align: center;
+  transition: opacity 0.7s ease;
+  margin-top: 15px;
+}
+
+.btn-ghost:hover {
+  opacity: 1;
+  color: white;
+}
