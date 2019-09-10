@@ -1,4 +1,4 @@
-.navbar-lewagon {
+.navbar-mobile {
   justify-content: space-between;
   background: #0A2472;
   flex-direction: row-reverse;
@@ -9,11 +9,11 @@
    }
 }
 
-.navbar-lewagon .navbar-collapse {
+.navbar-mobile .navbar-collapse {
   flex-grow: 0;
 }
 
-.navbar-lewagon .navbar-brand img {
+.navbar-mobile .navbar-brand img {
   width: 50px;
 }
 
