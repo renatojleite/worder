@@ -2,8 +2,9 @@
   <div class="row d-flex justify-content-center">
     <div class="col-xs-12 col-sm-6 col sm-offset-3">
       <div class="form-post">
-        <h1>Log in</h1>
-
+        <div class="row justify-content-center">
+          <img src="<%= image_path("logo1.jpg")%>" style="width: 250px;">
+        </div>
         <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
           <div class="form-inputs">
             <%= f.input :email,
@@ -29,11 +30,17 @@
 </div>
 
 <style>
+
   body {
     background: url(https://mb.cision.com/Public/14078/2385954/b95abf31f283d6b8_org.jpg) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+  }
+
+  .btn-primary {
+    background: #141B41;
+    border-color: #141B41;
   }
 </style>
