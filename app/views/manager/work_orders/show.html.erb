@@ -12,14 +12,14 @@
 <div class="container content-master">
   <div class="row d-flex justify-content-around" id="rowTopTop">
     <div class="col-6">
-      <h4>Operacoes / Detalhes</h4>
+      <h4>Operações / Detalhes</h4>
     </div>
     <div class="col-4">
       <select name="due_date">
         <option ><%= @work_order.due_date %></option>
       </select>
       <br><br>
-      <h2 id="h2"><%= status_name(@work_order.status) %></h2>
+      <h4 id="h2"><%= status_name(@work_order.status) %></h4>
     </div>
   </div>
   <div class="row d-flex align-items-center" id="rowTop">
@@ -44,27 +44,27 @@
 
   <div class="row d-flex align-items-center my-5" id="rowBottom">
     <div class="col-8">
-    <h2>Detalhes da Operacao</h2>
+    <h4>Detalhes da Operação</h4>
       <div class="row">
         <div class="card justify-content-center" id="a">
-          <h3>Ordem de serviço: <%= @work_order.name %></h3>
-          <h4>Prazo de Entrega: <p><%= @work_order.due_date %></p></h4>
-          <h4>Prioridade: <p> <%= priority_level(@work_order.priority) %></p></h4>
+          <h4>Ordem de serviço: <p><%= @work_order.name %></p></h4>
+          <h5>Prazo de Entrega: <p><%= @work_order.due_date %></p></h5>
+          <h5>Prioridade: <p><%= priority_level(@work_order.priority) %></p></h5>
         </div>
       </div>
       <div class="row">
         <div class="card justify-content-center" id="b">
-          <h4>Status:<%= status_name(@work_order.status) %></h4>
+          <h5>Status: <p><%= status_name(@work_order.status) %></p></h5>
         </div>
       </div>
       <div class="row">
         <div class="card justify-content-center" id="c">
-          <p><h3>Descrição:</h3> <%= @work_order.description %></</p>
+          <h5>Descrição: <p><%= @work_order.description %></p></h5>
         </div>
       </div>
       <div class="row">
         <div class="card justify-content-center" id="d">
-          <p><h3>Report:</h3> <%= @work_order.report %> </p>
+          <p><h5>Report: <p><%= @work_order.report %> </p></h5>
         </div>
       </div>
     </div>
