@@ -1,6 +1,6 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <a class="navbar-brand" href="#">
-    <img src="<%= image_path("logo.png")%>" alt="">
+    <img src="<%= image_path("logo1.jpg")%>" alt="">
 </a>
 
 
@@ -18,10 +18,27 @@
   <div class="container">
     <h1>W. Order</h1>
     <p>A Sua Plataforma Completa para Gestão de Equipes Externas</p>
-    <div style="text-align:center;">
-      <%= link_to 'Faça umTeste Agora!', new_user_session_path, class: "btn btn-ghost" %>
+    <div class="flip-card">
+      <div class="flip-card-inner">
+        <div style="text-align:center;">
+          <%= link_to 'Faça umTeste Agora!', new_user_session_path, class: "btn btn-ghost" %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 
 
+<!-- <div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <img src="img_avatar.png" alt="Avatar" style="width:300px;height:300px;">
+    </div>
+    <div class="flip-card-back">
+      <h1>John Doe</h1>
+      <p>Architect & Engineer</p>
+      <p>We love that guy</p>
+    </div>
+  </div>
+</div>
+ -->
