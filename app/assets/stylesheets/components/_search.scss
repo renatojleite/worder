@@ -1,5 +1,14 @@
 .search-form-control {
   position: relative;
+  width: 70%;
+  display: inline-block;
+
+
+}
+
+.card-search .row {
+  align-items: baseline;
+
 }
 
 .search-form-control .btn {
@@ -7,7 +16,7 @@
   top: 8px;
   bottom: 8px;
   right: 8px;
-  font-size: 11px !important;
+  font-size: 9px !important;
 
 }
 
