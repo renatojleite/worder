@@ -45,7 +45,7 @@
       <%= pie_chart @chart , width: "200px", legend: "bottom" %>
       <!-- Calendar -->
       <div class="card m-2">
-      <div class="card-header" style="font-size: 12px;">WO-calendário</div>
+      <!-- <div class="card-header" style="font-size: 12px;">WO-calendário</div> -->
       <p></p>
       <div id="calendar" class="card-dashboard-header" data-event="<%= @events.to_json %>" >
       </div>
@@ -69,22 +69,27 @@
 
       <!-- Filtros Work Orders -->
       <div class="card m-2">
-      <div class="card-header text-center" style="font-size: 12px;">WO-index</div>
-      <div class="card-body text-center">
+      <div class="card-header text-center" style="font-size: 12px; min-width: 309px;"></div>
+      <div class="card-body text-center card-search">
               <%= form_tag manager_work_orders_path, method: :get do %>
+              <div class="row">
+
+                <span style="font-size: 12px; padding: 0px 20px;">Pesquisar :</span>
+
               <div class="search-form-control form-group">
                 <%= text_field_tag :query,
                   params[:query],
                   class: "form-control string required",
-                  placeholder: "Find a team" %>
-                <%= submit_tag "Filtrar", class: "btn btn-primary" %>
+                  placeholder: "Buscar pela equipe" %>
+                <%= submit_tag "Filtrar", class: "btn btn-outline-secondary" %>
                 <% end %>
               </div>
+              </div>
 
-              <div class="text-left my-2"> <%= link_to "Limpar", manager_dashboard_index_path, class: "btn btn-primary btn-sm" %></div>
 
 
-              <span class="card-text d-flex" style="font-size: 10px;">
+
+              <span class="card-text d-flex justify-content-center my-4" style="font-size: 10px;">
                  <form action= "work_orders" >
                     <select name="team">
                       <% @team_leaders.each do |team| %>
@@ -101,16 +106,14 @@
                         <option value="<%= work_order %>"><%= status_name(work_order) %></option>
                       <% end %>
                     </select>
-                    <select name="due_date">
-                      <% @work_orders_full.pluck(:due_date).uniq.each do |work_order| %>
-                        <option value="<%= work_order %>"><%= work_order %></option>
-                      <% end %>
-                    </select>
-                    <input type="submit" value="Localizar" class="btn btn-primary btn-sm my-2 text-left">
+
+                    <input type="submit" value="Localizar" class="btn btn-outline-secondary btn-sm m-1"><span> <%= link_to "Limpar", manager_dashboard_index_path, class: "btn btn-light btn-sm m-1" %></span>
                   </form>
 
 
+
             </span>
+
 
                   <!-- Work Orders index -->
                   <div class="card my-3 text-center" style="font-size: 11px; padding: 5px;" >

@@ -1,8 +1,33 @@
 #calendar h2 {
-    font-size: 14px;
+    font-size: 16px;
+    color: black;
+    padding-left: 15px;
 }
 
-#calendar {
-    font-size: 9px;
+#calendar .fc-content {
+    display: flex;
+    justify-content: space-around;
+    font-size: 11px;
+    color: white;
+    padding: 2px 1px;
 }
 
+
+.fc-right .fc-today-button {
+  display: none;
+}
+
+.fc-right .fc-state-default {
+  background-color: white;
+  background-image: none !important;
+  height: 20px;
+  font-size: 8px;
+}
+
+.fc-head {
+  background-color: #fafafa;
+}
+
+.fc table {
+  font-size: .8em !important;
+}
