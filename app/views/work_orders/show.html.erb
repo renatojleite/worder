@@ -1,9 +1,10 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon ">
   <%= link_to "#", class: "navbar-brand" do %>
   <% end %>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
+    <i class="fas fa-bars"></i>
+    <!-- <span class="navbar-toggler-icon"></span> -->
   </button>
 
 
@@ -21,20 +22,27 @@
   </div>
 </div>
 
+<div class="container shadow-lg p-3 mb-3 bg-white rounded">
+  <div class="card p-5 shadow-lg p-3 mb-3 bg-white rounded">
+  <h3 align="center"> Work Order </h3>
 
+      <h4 align="center"><%= @work_order.name %></h4>
 
-<div class="container shadow-lg p-3 mb-5 bg-white rounded">
-  <div class="card p-5 shadow-lg p-3 mb-5 bg-white rounded">
-  <h1 align="center"> Work Order </h1>
+          <% if @work_order.priority == 3 %> <p class="btn-danger userbtn" style="font-size: 10px; padding: 2px 15px; border-radius: 5px;">Alta</p>
+            <% elsif @work_order.priority == 2 %> <p class="btn-warning userbtn" style="font-size: 10px; padding: 2px 15px; border-radius: 5px;">Media</p>
+            <% else %> <p class="btn btn-primary" style="font-size: 10px; padding: 2px 15px; border-radius: 5px;">Baixa</p>
+          <% end %>
 
-      <h1 align="center"><%= @work_order.name %></h1>
-      <h3 align="center">Priority:  <%= @work_order.priority %></h3>
-      <p align="center"><%= @work_order.description %></p>
+          <% if @work_order.status == 1 %> <p class="btn-warning userbtn" style="font-size: 10px; padding: 2px 15px; border-radius: 5px;">Aberto</p>
+            <% elsif @work_order.status == 2 %> <p class="btn-primary userbtn" style="font-size: 10px; padding: 2px 15px; border-radius: 5px;">Em andamento</p>
+            <% else %> <p class="btn btn-success" style="font-size: 10px; color: white; padding: 2px 15px; border-radius: 5px;">Concluido</p>
+          <% end %>
+
+      <p align="center" style= "font-size: 0.7em; font-weight: normal;"><%= @work_order.description %></p>
 </div>
 
-<div class="container card p-5 shadow-lg p-3 mb-5 bg-white rounded">
-  <h5 align="center"><%= @work_order.address%> </h5>
-  <br>
+<div class="container shadow-lg p-3 mb-3 bg-white rounded">
+  <h6 align="center"><%= @work_order.address%> </h6>
 
   <div
     id="map"
@@ -43,9 +51,10 @@
     data-marker="<%= @marker.to_json %>"
     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
+
 </div>
 
-<div class="container shadow-lg p-3 mb-5 bg-white rounded">
+<div class="container shadow-lg p-3 mb-3 bg-white rounded">
 
   <div class="card p-3">
 
