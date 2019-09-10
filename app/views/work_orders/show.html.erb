@@ -1,37 +1,40 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <%= link_to "Voltar", work_orders_path(@work_order) %>
-    <img src="https://www.shareicon.net/data/128x128/2016/04/10/747355_man_512x512.png" />
+  <%= link_to "#", class: "navbar-brand" do %>
+  <% end %>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#"></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#"></a>
+        <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
+      <li class="nav-item dropdown">
+
+        <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
+          <%= link_to "Another action", "#", class: "dropdown-item" %>
+        </div>
       </li>
     </ul>
   </div>
 </div>
 
-<br>
-<br>
 
-<div class="container">
-  <div class="card p-5">
+
+<div class="container shadow-lg p-3 mb-5 bg-white rounded">
+  <div class="card p-5 shadow-lg p-3 mb-5 bg-white rounded">
   <h1 align="center"> Work Order </h1>
 
       <h1 align="center"><%= @work_order.name %></h1>
       <h3 align="center">Priority:  <%= @work_order.priority %></h3>
-
       <p align="center"><%= @work_order.description %></p>
 </div>
 
-<br>
-<br>
-
-<div class="container ">
-  <h3 align="center">Endereço <%= @work_order.address%> </h3>
+<div class="container card p-5 shadow-lg p-3 mb-5 bg-white rounded">
+  <h5 align="center"><%= @work_order.address%> </h5>
+  <br>
 
   <div
     id="map"
@@ -42,9 +45,8 @@
   </div>
 </div>
 
-<div class="container">
-  <br>
-  <br>
+<div class="container shadow-lg p-3 mb-5 bg-white rounded">
+
   <div class="card p-3">
 
     <%= simple_form_for @work_order do |f| %>

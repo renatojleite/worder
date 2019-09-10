@@ -1,14 +1,21 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <a class="navbar-brand" >
-    <img src="https://www.shareicon.net/data/128x128/2016/04/10/747355_man_512x512.png" />
-</a>
+  <%= link_to "#", class: "navbar-brand" do %>
+  <% end %>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#"></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#"></a>
+        <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
+      <li class="nav-item dropdown">
+
+        <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
+          <%= link_to "Another action", "#", class: "dropdown-item" %>
+        </div>
       </li>
     </ul>
   </div>
@@ -18,21 +25,21 @@
 <div class="container my-5">
   <div class="single-item text-center" >
     <% @work_orders.each do |work_order| %>
-      <div class="card p-5" style="width: 18rem;">
+      <div class="card p-5 rounded-sm form-postt usercard shadow-lg bg-white rounded" style="width: 18rem;">
         <i class="fab fa-get-pocket" style="font-size: 60px;"></i>
        <!--  <img src="https://images.unsplash.com/photo-1551711975-585d41fad0c2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80" class="card-img-top" alt="..."> -->
         <div class="card-body">
           <h5 class="card-title"><%= work_order.name %></h5>
+          <button class="btn userbtn btn-<%= work_order.status ? "success"  : "danger" %>">STATUS</button>
           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-           <%= link_to "view", work_order_path(work_order), :class => "btn - btn-primary" %>
+           <%= link_to "view", work_order_path(work_order), :class => "boton" %>
         </div>
       </div>
     <% end %>
   </div>
 </div>
 
-<br>
-<br>
 
-<div class="text-center"><%= link_to 'Log out', destroy_user_session_path, method: :delete %></div>
+<br>
+<br>
 
