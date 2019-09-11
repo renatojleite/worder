@@ -55,7 +55,8 @@
            data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
       </div>
     <div class="card m-2">
-    <div class="card-header text-center" style="font-size: 12px; min-width: 309px;"></div>
+    <div class="card-header text-center" style="font-size: 12px; min-width: 309px;">
+    </div>
       <div class="card-body text-center card-search">
 
               <%= form_tag manager_work_orders_path, method: :get do %>
@@ -134,7 +135,6 @@
 
           </div>
         </div>
-
           <span class="card-text d-flex justify-content-center my-4" style="font-size: 10px;">
            <form action= "work_orders" >
             <select name="team">
