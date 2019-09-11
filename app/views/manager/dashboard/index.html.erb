@@ -1,4 +1,4 @@
-<div class="wrapper">
+  <div class="wrapper">
   <div id="content">
     <button type="button" id="sidebarCollapse" class="btn btn-info">
       <i class="fas fa-align-left"></i>
@@ -133,67 +133,13 @@
                       </table>
                   </div>
 
-          </div>
-        </div>
-          <span class="card-text d-flex justify-content-center my-4" style="font-size: 10px;">
-           <form action= "work_orders" >
-            <select name="team">
-              <% @team_leaders.each do |team| %>
-              <option value="<%= team.id %>"><%= team.team_name %></option>
-              <% end %>
-            </select>
-            <select name="priority">
-              <% @work_orders_full.pluck(:priority).uniq.each do |work_order| %>
-              <option value="<%= work_order %>"><%= priority_level(work_order) %></option>
-              <% end %>
-            </select>
-            <select name="status">
-              <% @work_orders_full.pluck(:status).uniq.each do |work_order| %>
-              <option value="<%= work_order %>"><%= status_name(work_order) %></option>
-              <% end %>
-            </select>
-
-            <input type="submit" value="Localizar" class="btn btn-outline-secondary btn-sm m-1"><span> <%= link_to "Limpar", manager_dashboard_index_path, class: "btn btn-light btn-sm m-1" %></span>
-          </form>
-
-
-
-        </span>
-
-
-        <!-- Work Orders index -->
-        <div class="card my-3 text-center" style="font-size: 11px; padding: 5px;" >
-          <table class="table table-borderless table-hover table-sm">
-            <thead class="thead-light">
-              <tr>
-                <th scope="col">Work Order</th>
-                <th scope="col">Prioridade</th>
-                <th scope="col">Status</th>
-                <th scope="col">Team</th>
-              </tr>
-            </thead>
-            <tbody>
-              <% @work_orders.each do |order| %>
-                <tr>
-                  <th scope="row"><%= link_to "#{order.name}", manager_work_order_path(order) %> </th>
-                  <td>  <% if order.priority == 3 %> <p class="btn btn-danger" style="font-size: 10px; padding: 2px 15px; border-radius: 5px;">Alta</p>
-                    <% elsif order.priority == 2 %> <p class="btn btn-warning" style="font-size: 10px; padding: 2px 15px; border-radius: 5px;">Media</p>
-                    <% else %> <p class="btn btn-primary" style="font-size: 10px; padding: 2px 15px; border-radius: 5px;">Baixa</p>
-                    <% end %> </td>
-                    <td> <% if order.status == 1 %> <p class="btn btn-warning" style="font-size: 10px; padding: 2px 15px; border-radius: 5px;">Aberto</p>
-                      <% elsif order.status == 2 %> <p class="btn btn-primary" style="font-size: 10px; padding: 2px 15px; border-radius: 5px;">Em andamento</p>
-                      <% else %> <p class="btn btn-success" style="font-size: 10px; color: white; padding: 2px 15px; border-radius: 5px;">Concluido</p>
-                      <% end %> </td>
-                      <td> <%= order.team_leader.team_name %></td>
-                  </tr>
-                  <% end %>
-            </tbody>
-              </table>
+              </div>
             </div>
+
+
           </div>
         </div>
       </div>
-      <!-- Final da 2º coluna -->
     </div>
   </div>
 </div>
