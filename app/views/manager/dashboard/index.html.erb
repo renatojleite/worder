@@ -136,12 +136,12 @@
                           <% @work_orders.each do |order| %>
                           <tr>
                             <th scope="row"><%= link_to "#{order.name}", manager_work_order_path(order) %> </th>
-                              <td>  <% if order.priority == 3 %> <p class="btn btn-danger" style="font-size: 10px; padding: 2px 15px; border-radius: 5px;">Alta</p>
-                                <% elsif order.priority == 2 %> <p class="btn btn-warning" style="font-size: 10px; padding: 2px 15px; border-radius: 5px;">Media</p>
-                                <% else %> <p class="btn btn-primary" style="font-size: 10px; padding: 2px 15px; border-radius: 5px;">Baixa</p>
+                              <td>  <% if order.priority == 3 %> <p class="btn btn-outline-danger" style="font-size: 10px; padding: 2px 15px; border-radius: 5px;">Alta</p>
+                                <% elsif order.priority == 2 %> <p class="btn btn-outline-dark" style="font-size: 10px; padding: 2px 15px; border-radius: 5px;">Media</p>
+                                <% else %> <p class="btn btn-outline-secondary" style="font-size: 10px; padding: 2px 15px; border-radius: 5px;">Baixa</p>
                                 <% end %> </td>
-                              <td> <% if order.status == 1 %> <p class="btn btn-warning" style="font-size: 10px; padding: 2px 15px; border-radius: 5px;">Aberto</p>
-                                <% elsif order.status == 2 %> <p class="btn btn-primary" style="font-size: 10px; padding: 2px 15px; border-radius: 5px;">Em andamento</p>
+                              <td> <% if order.status == 1 %> <p class="btn btn-primary" style="font-size: 10px; padding: 2px 15px; border-radius: 5px;">Aberto</p>
+                                <% elsif order.status == 2 %> <p class="btn btn-info" style="font-size: 10px; padding: 2px 15px; border-radius: 5px;">Andamento</p>
                                 <% else %> <p class="btn btn-success" style="font-size: 10px; color: white; padding: 2px 15px; border-radius: 5px;">Concluido</p>
                                 <% end %> </td>
                               <td> <%= order.team_leader.team_name %></td>
