@@ -60,14 +60,21 @@
 
     <%= simple_form_for @work_order do |f| %>
 
-    <h3>Tasks</h3>
+
     <div id='tasks'>
+    <h4>Tarefas:</h4>
     <%= f.simple_fields_for :tasks do |task| %>
-    <%#= render 'task_fields', :f => task %>
     <div class='nested-fields'>
-        <%= task.object.description %>
-        <%= task.input :done, :as => :boolean %>
-        <%#= link_to_remove_association "remove task", f %>
+      <div class="row m-2">
+        <div class="col-8">
+          <div class="card pl-2 pr-4 py-2">
+            <%= task.object.description %>
+          </div>
+        </div>
+        <div class="col-4">
+            <%= task.input :done, :as => :boolean %>
+        </div>
+      </div>
     </div>
 
     <% end %>
