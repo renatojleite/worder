@@ -14,7 +14,12 @@ class WorkOrdersController < ApplicationController
   end
 
   def show
-    @marker = { lat: @work_order.latitude, lng: @work_order.longitude, image_url: helpers.asset_url('shovel_marcador.png') }
+    @markers = {
+      lat: @work_order.latitude,
+      lng: @work_order.longitude,
+      infoWindow: render_to_string(partial: "info_window", locals: { work_order: @work_order }),
+
+    }
   end
 
   def article_params
