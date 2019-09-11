@@ -119,13 +119,13 @@
                     <table class="table table-borderless table-hover table-sm">
                       <thead class="thead-light">
                         <tr>
-                        <th scope="col">Work Order</th>
-                        <th scope="col">Prioridade</th>
-                        <th scope="col">Status</th>
-                        <th scope="col">Team</th>
+                          <th scope="col">Work Order</th>
+                          <th scope="col">Prioridade</th>
+                          <th scope="col">Status</th>
+                          <th scope="col">Team</th>
                         </tr>
                       </thead>
-                        <tbody>
+                      <tbody>
                           <% @work_orders.each do |order| %>
                           <tr>
                             <th scope="row"><%= link_to "#{order.name}", manager_work_order_path(order) %> </th>

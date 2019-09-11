@@ -1,4 +1,11 @@
-<p><%= order.name %></p>
-<p><%= order.address %></p>
-<p><%= order.status %></p>
-<p><%= order.team_leader_id %></p>
+<div class="d-flex flex-column">
+
+  <h6> <strong><%= link_to order.name, manager_work_order_path(order) %></strong> </h6>
+  <div class=""> <%= order.address %> </div>
+        <% if order.status == 1 %> <p class="btn btn-warning" style="font-size: 10px; padding: 2px 15px; border-radius: 5px;">Aberto</p>
+        <% elsif order.status == 2 %> <p class="btn btn-primary" style="font-size: 10px; padding: 2px 15px; border-radius: 5px;">Em andamento</p>
+        <% else %> <p class="btn btn-success" style="font-size: 10px; color: white; padding: 2px 15px; border-radius: 5px;">Concluido</p>
+        <% end %>
+  <!-- <div class=""> <%= order.status %> </div> -->
+  <div class=""> <%= order.team_leader.team_name %> </div>
+</div>
