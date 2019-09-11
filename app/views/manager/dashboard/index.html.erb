@@ -1,154 +1,134 @@
 <div class="wrapper">
-
   <div id="content">
-  <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light"> -->
-      <button type="button" id="sidebarCollapse" class="btn btn-info">
+    <button type="button" id="sidebarCollapse" class="btn btn-info">
       <i class="fas fa-align-left"></i>
-      <span></span>
-      </button>
-  <!-- </nav> -->
-  <%= render 'sidebar' %>
+    </button>
+    <%= render 'sidebar' %>
   </div>
-
-
-  <div class="container-full   content-master">
-    <div class="row">
-
-
-      <div class="col-6">
-      <!-- Inicio da 1º coluna -->
-            <!-- Box Status -->
-            <div class="m-2">
-            <div class="row justify-content-center">
-            <div class="card text-white bg-secondary m-1" style="width: 150px;">
-              <div class="card-header text-center">Total</div>
-              <div class="card-body">
-                <h5 class="card-title text-center" style="font-size: 28px;"><%= @work_orders.all.count %></h5>
-              </div>
+</div>
+<div class="container-full content-master">
+  <div class="row">
+    <div class="col-6">
+      <div class="m-2">
+        <div class="row justify-content-center">
+          <div class="card text-white bg-secondary m-1" style="width: 150px;">
+            <div class="card-header text-center">Total</div>
+            <div class="card-body">
+              <h5 class="card-title text-center" style="font-size: 28px;">
+                <%= @work_orders.all.count %>
+              </h5>
             </div>
-
-            <div class="card text-white bg-info m-1" style="width: 150px;">
-              <div class="card-header text-center">Pendentes</div>
-              <div class="card-body">
-                <h5 class="card-title text-center" style="font-size: 28px;"><%= @work_orders.where(status: 2).count %></h5>
-              </div>
-            </div>
-            <div class="card text-white bg-success m-1" style="width: 150px;">
-              <div class="card-header text-center">Realizados</div>
-              <div class="card-body">
-                <h5 class="card-title text-center" style="font-size: 28px;"><%= @work_orders.where(status: 3).count %></h5>
-            </div>
-            </div>
-            </div>
-
-      </div>
-      <%= pie_chart @chart , width: "200px", legend: "bottom" %>
-      <!-- Calendar -->
-      <div class="card m-2">
-      <!-- <div class="card-header" style="font-size: 12px;">WO-calendário</div> -->
-      <p></p>
-      <div id="calendar" class="card-dashboard-header" data-event="<%= @events.to_json %>" >
-      </div>
-      </div>
-
-      <!-- Final da 1º coluna -->
-      </div>
-
-      <div class="col-6">
-      <!-- Inicio da 2º coluna -->
-
-      <!-- MAP -->
-      <div class="card m-2"
-        id="map"
-        style="width: 97%; height: 300px;"
-        data-markers="<%= @markers.to_json %>"
-        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-      </div>
-
-
-
-      <!-- Filtros Work Orders -->
-      <div class="card m-2">
-      <div class="card-header text-center" style="font-size: 12px; min-width: 309px;"></div>
-      <div class="card-body text-center card-search">
-              <%= form_tag manager_work_orders_path, method: :get do %>
-              <div class="row">
-
-                <span style="font-size: 12px; padding: 0px 20px;">Pesquisar :</span>
-
-              <div class="search-form-control form-group">
-                <%= text_field_tag :query,
-                  params[:query],
-                  class: "form-control string required",
-                  placeholder: "Buscar pela equipe" %>
-                <%= submit_tag "Filtrar", class: "btn btn-outline-secondary" %>
-                <% end %>
-              </div>
-              </div>
-
-
-
-
-              <span class="card-text d-flex justify-content-center my-4" style="font-size: 10px;">
-                 <form action= "work_orders" >
-                    <select name="team">
-                      <% @team_leaders.each do |team| %>
-                        <option value="<%= team.id %>"><%= team.team_name %></option>
-                      <% end %>
-                    </select>
-                    <select name="priority">
-                      <% @work_orders_full.pluck(:priority).uniq.each do |work_order| %>
-                        <option value="<%= work_order %>"><%= priority_level(work_order) %></option>
-                      <% end %>
-                    </select>
-                    <select name="status">
-                      <% @work_orders_full.pluck(:status).uniq.each do |work_order| %>
-                        <option value="<%= work_order %>"><%= status_name(work_order) %></option>
-                      <% end %>
-                    </select>
-
-                    <input type="submit" value="Localizar" class="btn btn-outline-secondary btn-sm m-1"><span> <%= link_to "Limpar", manager_dashboard_index_path, class: "btn btn-light btn-sm m-1" %></span>
-                  </form>
-
-
-
-            </span>
-
-
-                  <!-- Work Orders index -->
-                  <div class="card my-3 text-center" style="font-size: 11px; padding: 5px;" >
-                    <table class="table table-borderless table-hover table-sm">
-                      <thead class="thead-light">
-                        <tr>
-                        <th scope="col">Work Order</th>
-                        <th scope="col">Prioridade</th>
-                        <th scope="col">Status</th>
-                        <th scope="col">Team</th>
-                        </tr>
-                      </thead>
-                        <tbody>
-                          <% @work_orders.each do |order| %>
-                          <tr>
-                            <th scope="row"><%= link_to "#{order.name}", manager_work_order_path(order) %> </th>
-                              <td>  <% if order.priority == 3 %> <p class="btn btn-danger" style="font-size: 10px; padding: 2px 15px; border-radius: 5px;">Alta</p>
-                                <% elsif order.priority == 2 %> <p class="btn btn-warning" style="font-size: 10px; padding: 2px 15px; border-radius: 5px;">Media</p>
-                                <% else %> <p class="btn btn-primary" style="font-size: 10px; padding: 2px 15px; border-radius: 5px;">Baixa</p>
-                                <% end %> </td>
-                              <td> <% if order.status == 1 %> <p class="btn btn-warning" style="font-size: 10px; padding: 2px 15px; border-radius: 5px;">Aberto</p>
-                                <% elsif order.status == 2 %> <p class="btn btn-primary" style="font-size: 10px; padding: 2px 15px; border-radius: 5px;">Em andamento</p>
-                                <% else %> <p class="btn btn-success" style="font-size: 10px; color: white; padding: 2px 15px; border-radius: 5px;">Concluido</p>
-                                <% end %> </td>
-                              <td> <%= order.team_leader.team_name %></td>
-                          </tr>
-                          <% end %>
-                        </tbody>
-                      </table>
-                  </div>
           </div>
+          <div class="card text-white bg-info m-1" style="width: 150px;">
+            <div class="card-header text-center">Pendentes</div>
+            <div class="card-body">
+              <h5 class="card-title text-center" style="font-size: 28px;">
+                <%= @work_orders.where(status: 2).count %>
+              </h5>
+            </div>
+          </div>
+          <div class="card text-white bg-success m-1" style="width: 150px;">
+            <div class="card-header text-center">Realizados</div>
+            <div class="card-body">
+              <h5 class="card-title text-center" style="font-size: 28px;">
+                <%= @work_orders.where(status: 3).count %>
+              </h5>
+            </div>
           </div>
         </div>
-      <!-- Final da 2º coluna -->
+      </div>
+      <div class="row">
+        <%= area_chart WorkOrder.group(:due_date).count %>
+      </div>
+      <div class="row">
+        <%= bar_chart TeamLeader.group(:team_name).sum(@work_orders.count) %>
+      </div>
+      <div class="card m-2">
+        <div id="calendar" class="card-dashboard-header" data-event="<%= @events.to_json %>" ></div>
       </div>
     </div>
+    <div class="col-6">
+      <div class="card m-2"
+           id="map"
+           style="width: 97%; height: 300px;"
+           data-markers="<%= @markers.to_json %>"
+           data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
+    <div class="card m-2">
+    <div class="card-header text-center" style="font-size: 12px; min-width: 309px;"></div>
+      <div class="card-body text-center card-search">
+        <%= form_tag manager_work_orders_path, method: :get do %>
+        <div class="row">
+          <span style="font-size: 12px; padding: 0px 20px;">Pesquisar :</span>
+          <div class="search-form-control form-group">
+            <%= text_field_tag :query, params[:query],
+            class: "form-control string required",
+            placeholder: "Buscar pela equipe" %>
+            <%= submit_tag "Filtrar", class: "btn btn-outline-secondary" %>
+            <% end %>
+          </div>
+        </div>
+
+          <span class="card-text d-flex justify-content-center my-4" style="font-size: 10px;">
+           <form action= "work_orders" >
+            <select name="team">
+              <% @team_leaders.each do |team| %>
+              <option value="<%= team.id %>"><%= team.team_name %></option>
+              <% end %>
+            </select>
+            <select name="priority">
+              <% @work_orders_full.pluck(:priority).uniq.each do |work_order| %>
+              <option value="<%= work_order %>"><%= priority_level(work_order) %></option>
+              <% end %>
+            </select>
+            <select name="status">
+              <% @work_orders_full.pluck(:status).uniq.each do |work_order| %>
+              <option value="<%= work_order %>"><%= status_name(work_order) %></option>
+              <% end %>
+            </select>
+
+            <input type="submit" value="Localizar" class="btn btn-outline-secondary btn-sm m-1"><span> <%= link_to "Limpar", manager_dashboard_index_path, class: "btn btn-light btn-sm m-1" %></span>
+          </form>
+
+
+
+        </span>
+
+
+        <!-- Work Orders index -->
+        <div class="card my-3 text-center" style="font-size: 11px; padding: 5px;" >
+          <table class="table table-borderless table-hover table-sm">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col">Work Order</th>
+                <th scope="col">Prioridade</th>
+                <th scope="col">Status</th>
+                <th scope="col">Team</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @work_orders.each do |order| %>
+                <tr>
+                  <th scope="row"><%= link_to "#{order.name}", manager_work_order_path(order) %> </th>
+                  <td>  <% if order.priority == 3 %> <p class="btn btn-danger" style="font-size: 10px; padding: 2px 15px; border-radius: 5px;">Alta</p>
+                    <% elsif order.priority == 2 %> <p class="btn btn-warning" style="font-size: 10px; padding: 2px 15px; border-radius: 5px;">Media</p>
+                    <% else %> <p class="btn btn-primary" style="font-size: 10px; padding: 2px 15px; border-radius: 5px;">Baixa</p>
+                    <% end %> </td>
+                    <td> <% if order.status == 1 %> <p class="btn btn-warning" style="font-size: 10px; padding: 2px 15px; border-radius: 5px;">Aberto</p>
+                      <% elsif order.status == 2 %> <p class="btn btn-primary" style="font-size: 10px; padding: 2px 15px; border-radius: 5px;">Em andamento</p>
+                      <% else %> <p class="btn btn-success" style="font-size: 10px; color: white; padding: 2px 15px; border-radius: 5px;">Concluido</p>
+                      <% end %> </td>
+                      <td> <%= order.team_leader.team_name %></td>
+                  </tr>
+                  <% end %>
+            </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Final da 2º coluna -->
+    </div>
   </div>
+</div>
 </div>
