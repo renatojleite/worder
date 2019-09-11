@@ -1,7 +1,7 @@
 .banner {
  background-size: cover;
  background-position: center;
- padding: 50px 0;
+ padding: 20px 0;
  min-height: 100vh;
 }
 .banner h1 {
@@ -14,24 +14,24 @@
  margin-top: 120px;
 }
 .banner p {
- font-size: 30px;
+ font-size: 40px;
  color: white;
- opacity: .8;
+ opacity: .9;
  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
  text-align: center;
- margin-top: 20px;
+ margin-top: 15px;
 }
 .btn-ghost {
  color: white;
  border: 5px solid white;
  padding: 8px 24px;
  border-radius: 50px;
- font-size: 20px;
+ font-size: 26px;
  font-weight: bold;
  opacity: 0.8;
  text-align: center;
  transition: opacity 0.7s ease;
- margin-top: 15px;
+ margin-top: 40px;
 }
 .btn-ghost:hover {
  opacity: 1;
