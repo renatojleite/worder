@@ -17,6 +17,7 @@ const initMapbox = () => {
 
   };
 
+
   if (mapElementDashboard) {
 
     mapboxgl.accessToken = mapElementDashboard.dataset.mapboxApiKey;
@@ -34,7 +35,15 @@ const initMapbox = () => {
 
         const popup = new mapboxgl.Popup().setHTML(marker.infoWindow);
 
-        new mapboxgl.Marker()
+        const element = document.createElement('div');
+        element.className = 'marker';
+        element.style.backgroundImage = `url('${marker.image_url}')`;
+        element.style.backgroundSize = 'contain';
+        element.style.width = '55px';
+        element.style.height = '55px';
+
+
+        new mapboxgl.Marker(element)
           .setLngLat([marker.lng, marker.lat])
           .setPopup(popup)
           .addTo(map);
@@ -53,7 +62,6 @@ const initMapbox = () => {
 
   }
 };
-
 
 
 

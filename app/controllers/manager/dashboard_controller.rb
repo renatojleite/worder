@@ -23,12 +23,30 @@ class Manager::DashboardController < ApplicationController
     end
 
     # # MAP
+    @work_orders_full = WorkOrder.geocoded
     @markers = @work_orders_full.map do |order|
-      {
-        lat: order.latitude,
-        lng: order.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { order: order }),
-      }
+      if order.status == 1
+        {
+          lat: order.latitude,
+          lng: order.longitude,
+          infoWindow: render_to_string(partial: "info_window", locals: { order: order }),
+          image_url: helpers.asset_url('icon-3-c_160.png') #amarelo
+        }
+      elsif order.status == 2
+        {
+          lat: order.latitude,
+          lng: order.longitude,
+          infoWindow: render_to_string(partial: "info_window", locals: { order: order }),
+          image_url: helpers.asset_url('icon-4-c_160.png') #azul
+        }
+      else
+        {
+          lat: order.latitude,
+          lng: order.longitude,
+          infoWindow: render_to_string(partial: "info_window", locals: { order: order }),
+          image_url: helpers.asset_url('icon-2-b_160.png') #verde
+        }
+      end
     end
 
     @chart = WorkOrder.group(:status).count
