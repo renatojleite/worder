@@ -27,7 +27,7 @@ class Manager::DashboardController < ApplicationController
       {
         lat: order.latitude,
         lng: order.longitude,
-        image_url: helpers.asset_url('shovel_marcador.png')
+        infoWindow: render_to_string(partial: "info_window", locals: { order: order }),
       }
     end
 

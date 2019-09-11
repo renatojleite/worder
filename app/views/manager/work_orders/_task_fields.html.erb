@@ -1,15 +1,13 @@
 <div class='nested-fields'>
   <div class="card px-3 py-3 my-2">
-  <div class="row ">
-  <div class="col-8">
-  <%= f.input :description, label: "Tarefa", as: :text, placeholder: "Defina a tarefa aqui" %>
-  </div>
-  <div class="col-4 d-flex justify-content-around align-items-center" style="margin-top: 1rem">
-
-    <%= f.input :done, as: :boolean, label: "Realizado" %>
-    <%= link_to_remove_association "", f, class: 'fas fa-minus-circle', style: 'margin-bottom: 1rem; color: #6D7FCC' %>
-  </div>
-  </div>
+    <div class="row ">
+      <div class="col-8">
+      <%= f.input :description, label: "Tarefa", placeholder: "Defina a tarefa aqui" %>
+      </div>
+      <div class="col-4 d-flex justify-content-around align-items-center" style="margin-top: 1rem">
+        <%= f.input :done, as: :boolean, label:"Realizado" %>
+        <%= link_to_remove_association "", f, class: 'fas fa-minus-circle', style: 'margin-bottom: 1rem; color: #EA5149' %>
+      </div>
+    </div>
   </div>
 </div>
-

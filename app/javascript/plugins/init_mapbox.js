@@ -1,65 +1,63 @@
 import mapboxgl from 'mapbox-gl';
 
 const initMapbox = () => {
-
-  const mapElement = document.getElementById('map');
-
+  const mapElementDashboard = document.getElementById('map');
 
   const fitMapToMarkers = (map, markers) => {
     const bounds = new mapboxgl.LngLatBounds();
-    markers.forEach(marker => bounds.extend([ marker.lng, marker.lat ]));
-    map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 });
+    // mark o endereço de todos os jobs no dashboard
+    if (Array.isArray(markers)) {
+      markers.forEach(marker => bounds.extend([marker.lng, marker.lat]));
+      map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 });
+    } // mark apenas o endereço do job no Work_order user e manager
+      else {
+      bounds.extend([markers.lng, markers.lat]);
+      map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 })
+    }
+
   };
 
-  if (mapElement) { // only build a map if there's a div#map to inject into
-    if (mapElement.dataset.marker){ // if there is one work order (show)
-      const marker = JSON.parse(mapElement.dataset.marker);
-      mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
-      const map = new mapboxgl.Map({
-        container: 'map',
-        style: 'mapbox://styles/mapbox/streets-v10',
-        center: [marker.lng, marker.lat],
-        zoom: 15
+  if (mapElementDashboard) {
+
+    mapboxgl.accessToken = mapElementDashboard.dataset.mapboxApiKey;
+
+    const map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/mapbox/streets-v10',
+      zoom: 15
+    });
+
+    const markers = JSON.parse(mapElementDashboard.dataset.markers);
+    // mark o endereço de todos os jobs no dashboard
+    if (Array.isArray(markers)) {
+      markers.forEach((marker) => {
+
+        const popup = new mapboxgl.Popup().setHTML(marker.infoWindow);
+
+        new mapboxgl.Marker()
+          .setLngLat([marker.lng, marker.lat])
+          .setPopup(popup)
+          .addTo(map);
       });
-      // markers.forEach((marker) => {
-      //   new mapboxgl.Marker()
-      //     .setLngLat([ marker.lng, marker.lat ])
-      //     .addTo(map);
-      // });
+    } // mark apenas o endereço do job no Work_order user e manager
+      else {
+        const popup = new mapboxgl.Popup().setHTML(markers.infoWindow);
 
+        new mapboxgl.Marker()
+          .setLngLat([markers.lng, markers.lat])
+          .setPopup(popup)
+          .addTo(map);
 
-      const element = document.createElement('div');
-      element.className = 'marker';
-      element.style.backgroundImage = `url('${marker.image_url}')`;
-      element.style.backgroundSize = 'contain';
-      element.style.width = '48px';
-      element.style.height = '75px';
-
-
-
-      new mapboxgl.Marker(element)
-        .setLngLat([marker.lng, marker.lat])
-        .addTo(map);
-
-      } else {
-        mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
-        const map = new mapboxgl.Map({
-          container: 'map',
-          style: 'mapbox://styles/mapbox/streets-v10',
-          zoom: 15
-        });
-        const markers = JSON.parse(mapElement.dataset.markers);
-        markers.forEach((marker) => {
-          new mapboxgl.Marker()
-            .setLngLat([ marker.lng, marker.lat ])
-            .addTo(map);
-        });
-        fitMapToMarkers(map, markers);
-      }
+    }
+    fitMapToMarkers(map, markers);
 
   }
 };
 
 
+
+
 export { initMapbox };
+
+
 
