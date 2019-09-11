@@ -14,11 +14,11 @@ class WorkOrdersController < ApplicationController
   end
 
   def show
-    @marker = { lat: @work_order.latitude, lng: @work_order.longitude, image_url: helpers.asset_url('shovel_marcador.png') }
-  end
-
-  def article_params
-    params.require(:article).permit(:title, :body, :photo)
+    @marker = {
+      lat: @work_order.latitude,
+      lng: @work_order.longitude,
+      infoWindow: render_to_string(partial: "info_window", locals: { work_order: @work_order })
+    }
   end
 
   def article_params
@@ -32,7 +32,6 @@ class WorkOrdersController < ApplicationController
     @work_order.update(work_order_params)
     flash[:alert] = "Atualizado com sucesso"
     redirect_to work_orders_path(@work_order)
-
   end
 
   private

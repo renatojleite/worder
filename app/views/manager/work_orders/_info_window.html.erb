@@ -1,0 +1,15 @@
+<!-- <p><%= work_order %></p>
+<p><%= work_order.address %></p>
+<p><%= work_order.status %></p>
+<p><%= work_order.team_leader_id %></p> -->
+
+
+<div class="d-flex flex-column">
+  <h6> <strong><%= work_order.name %></strong> </h6>
+  <div class=""> <%= work_order.address %> </div>
+        <% if work_order.status == 1 %> <p class="btn btn-warning" style="font-size: 10px; padding: 2px 15px; border-radius: 5px;">Aberto</p>
+        <% elsif work_order.status == 2 %> <p class="btn btn-primary" style="font-size: 10px; padding: 2px 15px; border-radius: 5px;">Em andamento</p>
+        <% else %> <p class="btn btn-success" style="font-size: 10px; color: white; padding: 2px 15px; border-radius: 5px;">Concluido</p>
+        <% end %>
+  <div class=""> <%= work_order.team_leader.team_name %> </div>
+</div>
