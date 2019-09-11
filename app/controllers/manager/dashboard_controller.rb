@@ -30,14 +30,14 @@ class Manager::DashboardController < ApplicationController
           lat: order.latitude,
           lng: order.longitude,
           infoWindow: render_to_string(partial: "info_window", locals: { order: order }),
-          image_url: helpers.asset_url('icon-3-b.png') #amarelo
+          image_url: helpers.asset_url('icon-3-c_160.png') #amarelo
         }
       elsif order.status == 2
         {
           lat: order.latitude,
           lng: order.longitude,
           infoWindow: render_to_string(partial: "info_window", locals: { order: order }),
-          image_url: helpers.asset_url('icon-4-b.png') #azul
+          image_url: helpers.asset_url('icon-4-c_160.png') #azul
         }
       else
         {
