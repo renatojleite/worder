@@ -77,16 +77,15 @@
 <div class="col-6">
   <div class="task-adding">
     <h1>Checklist de tarefas</h1>
-    <br>
+    <br> -->
     <div id='tasks'>
       <!-- <span class="text-p">Faça um <b>checklist de tarefas</b>, simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI</span> -->
+
       <%= f.simple_fields_for :tasks do |task| %>
-
         <%= render 'task_fields', f: task %>
-
       <% end %>
 
-    <!-- <div class='links d-flex justify-content-center align-items-center my-3'> -->
+    <!-- <!-  <div class='links d-flex justify-content-center align-items-center my-3'> -->
     <%= link_to_add_association 'add', f, :tasks %>
 <!--         <span class="m-2" style="color: #A3A3A3">Adicionar tarefa</span>
  -->
