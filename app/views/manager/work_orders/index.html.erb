@@ -62,7 +62,7 @@
                       <% end %>
                     </select>
 
-                    <input type="submit" value="Localizar" class="btn btn-outline-secondary btn-sm m-1"><span> <%= link_to "Limpar", manager_dashboard_index_path, class: "btn btn-light btn-sm m-1" %></span>
+                    <input type="submit" value="Localizar" class="btn btn-outline-secondary btn-sm m-1"><span> <%= link_to "Limpar", manager_work_orders_path, class: "btn btn-light btn-sm m-1" %></span>
                   </form>
 
 
@@ -88,16 +88,18 @@
                               <td>  <% if order.priority == 3 %> <p class="btn btn-danger" style="font-size: 10px; padding: 2px 15px; border-radius: 5px;">Alta</p>
                                 <% elsif order.priority == 2 %> <p class="btn btn-warning" style="font-size: 10px; padding: 2px 15px; border-radius: 5px;">Media</p>
                                 <% else %> <p class="btn btn-primary" style="font-size: 10px; padding: 2px 15px; border-radius: 5px;">Baixa</p>
-                                <% end %> </td>
+                                <% end %>
+                              </td>
                               <td> <% if order.status == 1 %> <p class="btn btn-warning" style="font-size: 10px; padding: 2px 15px; border-radius: 5px;">Aberto</p>
                                 <% elsif order.status == 2 %> <p class="btn btn-primary" style="font-size: 10px; padding: 2px 15px; border-radius: 5px;">Em andamento</p>
                                 <% else %> <p class="btn btn-success" style="font-size: 10px; color: white; padding: 2px 15px; border-radius: 5px;">Concluido</p>
-                                <% end %> </td>
+                                <% end %>
+                              </td>
                               <td> <%= order.team_leader.team_name %></td>
                           </tr>
                           <% end %>
                         </tbody>
-                      </table>
+                    </table>
                   </div>
           </div>
           </div>
