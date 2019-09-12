@@ -49,12 +49,12 @@
                     </div>
 
 
-  <h1 class="p-3">Datas e Prazo:</h1>
+  <h1 class="p-3">Datas e Horário:</h1>
 
                     <div class="card p-3">
                       <div class="row">
                         <div class="col-4">
-                          <span class="text-p">Prazo do serviço:</span>
+                          <span class="text-p">Prazo:</span>
                         </div>
                         <div class="col-8">
                         <!-- PRAZO E HR -->
@@ -65,7 +65,7 @@
 
                       <div class="row">
                         <div class="col-4">
-                          <span class="text-p">Prazo do serviço:</span>
+                          <span class="text-p">Horário:</span>
                         </div>
                         <div class="col-8">
                         <%= f.input :due_time, label: "Horário aproximado:", as: :time, label: false %>
@@ -99,7 +99,7 @@
 
 
                         <div id='tasks'>
-                          <span class="text-p">Faça um <b>checklist de tarefas</b>, simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI</span>
+                          <span class="text-p">Descreva abaixo o <b>checklist de tarefas</b>das tarefas prioritárias para a tarefa:</span>
 
                           <%= f.simple_fields_for :tasks do |task| %>
                             <%= render 'task_fields', f: task %>

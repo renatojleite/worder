@@ -35,11 +35,11 @@ manager = Manager.create!(user: admin)
 puts "Manager created!"
 
 puts "Creating team leader...."
-team_leader = TeamLeader.create!(user: user, manager: manager, team_name: "Equipe Manutenção-A01")
-team_leader2 = TeamLeader.create!(user: user2, manager: manager, team_name: "Equipe Técnica-A02")
-team_leader3 = TeamLeader.create!(user: user3, manager: manager, team_name: "Equipe Engenharia-B03")
-team_leader4 = TeamLeader.create!(user: user4, manager: manager, team_name: "Equipe Acompanhamento-C04")
-team_leader5 = TeamLeader.create!(user: user5, manager: manager, team_name: "Equipe Operação-D05")
+team_leader = TeamLeader.create!(user: user, manager: manager, team_name: "Eq. Manutenção-A1")
+team_leader2 = TeamLeader.create!(user: user2, manager: manager, team_name: "Eq. Técnica-A2")
+team_leader3 = TeamLeader.create!(user: user3, manager: manager, team_name: "Eq. Engenharia-B3")
+team_leader4 = TeamLeader.create!(user: user4, manager: manager, team_name: "Eq. Vistoria-C4")
+team_leader5 = TeamLeader.create!(user: user5, manager: manager, team_name: "Eq. Operação-D5")
 
 puts "Team leader created!!"
 
