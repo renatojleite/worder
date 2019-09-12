@@ -1,5 +1,5 @@
 class Manager::WorkOrdersController < ApplicationController
-  before_action :set_work_order, only: %i[show edit update delete]
+  before_action :set_work_order, only: %i[show edit update destroy]
 
   def index
     @team_leaders = TeamLeader.all
@@ -43,16 +43,17 @@ class Manager::WorkOrdersController < ApplicationController
   end
 
   def edit
+
   end
 
   def update
     @work_order.update(work_order_params)
-    redirect_to work_order_path(@work_order)
+    redirect_to manager_work_orders_path
   end
 
   def destroy
     @work_order.destroy
-    redirect_to work_orders_path
+    redirect_to manager_dashboard_index_path
   end
 
   private

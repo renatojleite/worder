@@ -1,6 +1,6 @@
 class WorkOrder < ApplicationRecord
   # enum status: { Aberta: 0, 'Em andamento': 1, Concluido: 2 }
-  has_many :tasks, inverse_of: :work_order
+  has_many :tasks, inverse_of: :work_order, dependent: :destroy
   belongs_to :team_leader
 
   accepts_nested_attributes_for :tasks, reject_if: :all_blank, allow_destroy: true

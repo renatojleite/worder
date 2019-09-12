@@ -1,0 +1,128 @@
+<!-- <div class="container"> -->
+<!--   <div class="row">
+ -->
+  <!-- <div class="col-6">  Início 1º Coluna  -->
+                    <!-- <div class="row"> -->
+                      <!-- <div class="col-4 px-3"> -->
+                      <%= simple_form_for @work_order, url: manager_work_order_path do |f| %>
+
+  <div class="row">
+
+    <div class="col-6"> <!-- Início 1º Coluna -->
+
+  <h1 class="p-3">Novo Job</h1>
+
+                  <div class="card p-3">
+                    <div class="row">
+                      <!--  NOVO JOB -->
+                      <!-- <span class="text-p col-2 px-3"> Nome:</span> -->
+                      <div class="col-12 px-4">
+                      <%= f.input :name, placeholder: 'Nome da WO', label: false %>
+                      </div>
+                    </div>
+
+                    <div class="row p-3">
+                      <div class="col-6">
+                      <!-- INFOS INICIAIS -->
+                      <%= f.association :team_leader, label: "Alocar a equipe:", label_method: :team_name,  include_blank: false %>
+                      </div>
+                      <div class="col-3">
+                      <%= f.input :priority, label: "Prioridade:", collection: { Baixo: 1, Médio: 2, Alto: 3 }, include_blank: false %>
+                      </div>
+                      <div class="col-3">
+                      <%= f.input :status, label: "Status :", collection: { Aberto: 1, "Em Andamento": 2, Concluido: 3 }, include_blank: false %>
+                      </div>
+                    </div>
+                  </div>
+
+  <h1 class="p-3">Localização</h1>
+
+                    <div class="card p-3">
+                      <div class="row">
+                        <div class="col-4">
+                          <span class="text-p">Local da operação:</span>
+                        </div>
+                        <div class="col-8">
+                        <%= f.input :address, label: "Endereço:", placeholder: 'Inserir endereço Google Maps',label: false %>
+                        </div>
+                      </div>
+                    </div>
+
+
+  <h1 class="p-3">Datas e Prazo:</h1>
+
+                    <div class="card p-3">
+                      <div class="row">
+                        <div class="col-4">
+                          <span class="text-p">Prazo do serviço:</span>
+                        </div>
+                        <div class="col-8">
+                        <!-- PRAZO E HR -->
+                        <%= f.input :due_date, label: "Data Prazo:", as: :date, start_year: Date.today.year, end_year: Date.today.year + 2, order: [:day, :month, :year], label: false %>
+                        </div>
+                      </div>
+
+
+                      <div class="row">
+                        <div class="col-4">
+                          <span class="text-p">Prazo do serviço:</span>
+                        </div>
+                        <div class="col-8">
+                        <%= f.input :due_time, label: "Horário aproximado:", as: :time, label: false %>
+                        </div>
+                      </div>
+                    </div>
+
+
+  <h1 class="p-3">Descrição do serviço:</h1>
+
+                    <div class="card p-3">
+                      <div class="row">
+                        <div class="col-4">
+                          <span class="text-p">Descreva os detalhes:</span>
+                        </div>
+                        <div class="col-8">
+                        <!-- DETALHES -->
+                        <%= f.input :description, label: "Detalhes sobre o serviço:", as: :text, label: false %>
+                        </div>
+                      </div>
+                    </div>
+
+
+  </div>   <!--  Fim 1º Coluna -->
+
+  <div class="col-6">  <!-- Início 2º Coluna -->
+
+                      <div class="task-adding">
+                        <h1>Checklist de tarefas</h1>
+                        <br>
+
+
+                        <div id='tasks'>
+                          <span class="text-p">Faça um <b>checklist de tarefas</b>, simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI</span>
+
+                          <%= f.simple_fields_for :tasks do |task| %>
+                            <%= render 'task_fields', f: task %>
+                          <% end %>
+
+                          <div class='links d-flex justify-content-center align-items-center my-3'>
+                            <%= link_to_add_association '', f, :tasks, class: "fas fa-plus-circle", style: "font-size: 38px; color: #7386D4;" %>
+                            <span class="m-2" style="color: #A3A3A3">Adicionar tarefa</span>
+                          </div>
+                        </div>
+
+
+                      </div>
+                      <div class='block py-5'>
+                      <%= f.button :submit, class: 'btn btn-primary btn-block' %>
+                          <% end %>
+
+                      <%= link_to "Excluir", manager_work_order_path(@work_order), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-outline-secondary btn-block' %>
+
+                      </div>
+
+  </div> <!-- Fim 2º Coluna -->
+
+  </div>
+<!-- </div>
+ --><!-- </div> -->
