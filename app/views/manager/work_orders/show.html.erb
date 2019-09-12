@@ -13,7 +13,7 @@
   <h4 class="title-pages">Operações | Detalhes </h4>
   <div class="row justify-content-between align-items-center px-3">
 
-    <h4>Detalhes da Operacao: <br> <br> <b> <%= @work_order.name %> </b></h4>
+    <h4>Detalhes da Operação: <br> <br> <b> <%= @work_order.name %> </b></h4>
 
     <div class="card px-4">
     <span class="my-2">REGISTRO: 201910-A03</span>
@@ -87,25 +87,31 @@
     <div class="col-8"> <!-- 1º Coluna inicio -->
 
 
-      <h1> <b>Detalhes da Operacao:</b></h1>
-      <span class="btn btn-flat btn-sm" style="font-size: 12px; padding: 2px 15px; border-radius: 5px;">
+      <h1> <b>Detalhes da Operação:</b></h1>
 
-
-      </span>
-
-
-      <div class="row my-3">
+      <div class="row">
         <div class="card justify-content-center" id="a">
-          <h1>Ordem de serviço: <%= @work_order.name %></h1>
-          <p><h1>Equipe:</h1> <%= @work_order.team_leader.team_name %> </p>
-          <p><h1>Operador:</h1> <%= @work_order.team_leader.user.name %> </p>
-          <h1>Prazo de Entrega: <p><%= @work_order.due_date %></p></h1>
-          <h1>Prioridade: <p> <%= priority_level(@work_order.priority) %></p></h1>
+          <h1>Ordem de serviço:</h1> <div class="card p-3" id="x"><%= @work_order.name %></div>
+          <p><h1>Equipe:</h1>
+            <div class="card p-3" id="x"><%= @work_order.team_leader.team_name %></div>
+          <p><h1>Operador:</h1><div class="card p-3" id="x"> <%= @work_order.team_leader.user.name %> </div>
+          <p><h1>Prazo:</h1><div class="card p-3" id="x"> <%= @work_order.due_date %> </div>
+          </%>
+          <p><h1>Prioridade:</h1> <div class="card p-3" id="x"> <%= priority_level(@work_order.priority) %> </div>
         </div>
       </div>
       <div class="row">
         <div class="card justify-content-center" id="b">
-          <h1>Status:<%= status_name(@work_order.status) %></h1>
+          <h1>Status operaciona:</h1>
+
+        <span>
+          <% if @work_order.status == 1 %> <p class="btn btn-primary btn-lg" style="font-size: 12px; padding: 2px 15px; border-radius: 5px;">Aberto</p>
+          <% elsif @work_order.status == 2 %> <p class="btn btn-info btn-lg" style="font-size: 12px; padding: 2px 15px; border-radius: 5px;">Andamento</p>
+          <% else %> <p class="btn btn-success btn-lg" style="font-size: 12px; color: white; padding: 2px 15px; border-radius: 5px;">Concluido</p>
+          <% end %>
+        </span>
+
+
         </div>
       </div>
       <div class="row">
@@ -115,9 +121,9 @@
       </div>
 
       <div class="row">
-        <div class="card" id="d">
-          <h1>Report:</h1>
-          <span class="card">
+        <div class="card card-task-show" id="d">
+          <h1>Report operacional:</h1>
+          <span class="card p-4 my-3 card-report">
           <%= @work_order.report %>
           </span>
             <!-- TASKS -->
