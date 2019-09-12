@@ -13,12 +13,17 @@
       <li class="nav-item active">
         <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
       <li class="nav-item dropdown">
-
         <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
           <%= link_to "Another action", "#", class: "dropdown-item" %>
         </div>
       </li>
     </ul>
+  </div>
+</div>
+
+<div class="row d-flex userbtn">
+  <div class="col-12">
+    <h6 style="padding: 4px;background-color: #FFBA00;width:200px; border-radius: 4px;color:white; margin-top: 4px; text-align: center;"><%= current_user.name %></h6>
   </div>
 </div>
 
@@ -45,7 +50,7 @@
 
 
 
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <p class="card-text">Gestão de WO's nunca foi tão eficiente.</p>
           <br>
           <br>
            <%= link_to "view", work_order_path(work_order), :class => "boton-user" %>
