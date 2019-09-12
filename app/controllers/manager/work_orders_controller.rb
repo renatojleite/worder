@@ -26,10 +26,13 @@ class Manager::WorkOrdersController < ApplicationController
       image_url: helpers.asset_url('shovel_marcador.png'),
       infoWindow: render_to_string(partial: "info_window", locals: { work_order: @work_order })
     }
-    @chart = WorkOrder.group(:status).count
-    @chart.keys.each do |key|
-      @chart[['Aberto', 'Em andamento', 'Concluído'][key - 1]] = @chart.delete key
-    end
+
+
+    # @work_order.tasks.pluck(:done)
+    # @chart = WorkOrder.group(:done).count
+    # @chart.keys.each do |key|
+    #   @chart[['Aberto', 'Em andamento', 'Concluído'][key - 1]] = @chart.delete key
+    # end
   end
 
   def create

@@ -13,8 +13,9 @@
       <h4 class="title-pages">Operações | Listagem das Operações</h4>
       <div class="col-8">
             <div class="card-dashboard-header">
-              <p class="d-flex justify-content-center">
-              <%= link_to "Criar Ordem de Serviço", new_manager_work_order_path, class: "btn btn-primary my-2" %></p>
+              <div class=" justify-content-center my-5 wo-index-page">
+                <h4>Criar ordem de serviço</h4>
+              <p><%= link_to "Criar Aqui", new_manager_work_order_path, class: "btn btn-primary my-2 px-5" %></p></div>
             </div>
 
 
@@ -35,7 +36,7 @@
                 <%= text_field_tag :query,
                   params[:query],
                   class: "form-control string required",
-                  placeholder: "Buscar pela equipe" %>
+                  placeholder: "Buscar pelo serviço" %>
                 <%= submit_tag "Filtrar", class: "btn btn-outline-secondary" %>
                 <% end %>
               </div>
@@ -73,33 +74,31 @@
                   <!-- Work Orders index -->
                   <div class="card my-3 text-center" style="font-size: 11px; padding: 5px;" >
                     <table class="table table-borderless table-hover table-sm">
-                      <thead class="thead-light">
-                        <tr>
-                        <th scope="col">Work Order</th>
-                        <th scope="col">Prioridade</th>
-                        <th scope="col">Status</th>
-                        <th scope="col">Team</th>
-                        </tr>
-                      </thead>
-                        <tbody>
-                          <% @work_orders.each do |order| %>
-                          <tr>
-                            <th scope="row"><%= link_to "#{order.name}", manager_work_order_path(order) %> </th>
-                              <td>  <% if order.priority == 3 %> <p class="btn btn-danger" style="font-size: 10px; padding: 2px 15px; border-radius: 5px;">Alta</p>
-                                <% elsif order.priority == 2 %> <p class="btn btn-warning" style="font-size: 10px; padding: 2px 15px; border-radius: 5px;">Media</p>
-                                <% else %> <p class="btn btn-primary" style="font-size: 10px; padding: 2px 15px; border-radius: 5px;">Baixa</p>
-                                <% end %>
-                              </td>
-                              <td> <% if order.status == 1 %> <p class="btn btn-warning" style="font-size: 10px; padding: 2px 15px; border-radius: 5px;">Aberto</p>
-                                <% elsif order.status == 2 %> <p class="btn btn-primary" style="font-size: 10px; padding: 2px 15px; border-radius: 5px;">Em andamento</p>
-                                <% else %> <p class="btn btn-success" style="font-size: 10px; color: white; padding: 2px 15px; border-radius: 5px;">Concluido</p>
-                                <% end %>
-                              </td>
-                              <td> <%= order.team_leader.team_name %></td>
-                          </tr>
-                          <% end %>
-                        </tbody>
-                    </table>
+                                <thead class="thead-light">
+                                  <tr>
+                                    <th scope="col">Work Order</th>
+                                    <th scope="col">Prioridade</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Team</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                    <% @work_orders.each do |order| %>
+                                    <tr>
+                                      <th scope="row"><%= link_to "#{order.name}", manager_work_order_path(order) %> </th>
+                                        <td>  <% if order.priority == 3 %> <p class="btn btn-outline-danger" style="font-size: 10px; padding: 2px 15px; border-radius: 5px;">Alta</p>
+                                          <% elsif order.priority == 2 %> <p class="btn btn-outline-dark" style="font-size: 10px; padding: 2px 15px; border-radius: 5px;">Media</p>
+                                          <% else %> <p class="btn btn-outline-secondary" style="font-size: 10px; padding: 2px 15px; border-radius: 5px;">Baixa</p>
+                                          <% end %> </td>
+                                        <td> <% if order.status == 1 %> <p class="btn btn-primary" style="font-size: 10px; padding: 2px 15px; border-radius: 5px;">Aberto</p>
+                                          <% elsif order.status == 2 %> <p class="btn btn-info" style="font-size: 10px; padding: 2px 15px; border-radius: 5px;">Andamento</p>
+                                          <% else %> <p class="btn btn-success" style="font-size: 10px; color: white; padding: 2px 15px; border-radius: 5px;">Concluido</p>
+                                          <% end %> </td>
+                                        <td> <%= order.team_leader.team_name %></td>
+                                    </tr>
+                                    <% end %>
+                                  </tbody>
+                                </table>
                   </div>
           </div>
           </div>

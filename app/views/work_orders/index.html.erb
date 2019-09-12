@@ -21,7 +21,7 @@
   </div>
 </div>
 
-<div class="row d-flex userbtn">
+<div class="row d-flex userbtn-index">
   <div class="col-12">
     <h6 style="padding: 7px;background-color: #FFBA00; width:150px; border-radius: 2px;color:white; margin-top: 4px; text-align: center;"><%= current_user.name %></h6>
   </div>
@@ -30,7 +30,7 @@
 <div class="container my-5">
   <div class="single-item text-center " >
     <% @work_orders.each do |work_order| %>
-      <div class="card p-5 rounded-sm form-postt usercard " style="width: 80%;">
+      <div class="card p-5 rounded-sm form-postt usercard" style="width: 80%;">
         <i class="fab fa-get-pocket" style="font-size: 60px;"></i>
        <!--  <img src="https://images.unsplash.com/photo-1551711975-585d41fad0c2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80" class="card-img-top" alt="..."> -->
         <div class="card-body my-2">
@@ -38,14 +38,14 @@
           <br>
 
 
-          <% if work_order.priority == 3 %> <p class="btn-danger userbtn" style="font-size: 10px; padding: 2px 15px; border-radius: 5px;">Alta</p>
-            <% elsif work_order.priority == 2 %> <p class="btn-warning userbtn" style="font-size: 10px; padding: 2px 15px; border-radius: 5px;">Media</p>
-            <% else %> <p class="btn btn-primary" style="font-size: 10px; padding: 2px 15px; border-radius: 5px;">Baixa</p>
+          <% if work_order.priority == 3 %> <p class="btn-danger userbtn-index" style="font-size: 14px; padding: 2px 15px; border-radius: 5px;">Alta</p>
+            <% elsif work_order.priority == 2 %> <p class="btn-warning userbtn-index" style="font-size: 14px; padding: 2px 15px; border-radius: 5px;">Media</p>
+            <% else %> <p class="btn-primary userbtn-index" style="font-size: 14px; padding: 2px 15px; border-radius: 5px;">Baixa</p>
           <% end %>
 
-          <% if work_order.status == 1 %> <p class="btn-warning userbtn" style="font-size: 10px; padding: 2px 15px; border-radius: 5px;">Aberto</p>
-            <% elsif work_order.status == 2 %> <p class="btn-primary userbtn" style="font-size: 10px; padding: 2px 15px; border-radius: 5px;">Em andamento</p>
-            <% else %> <p class="btn btn-success" style="font-size: 10px; color: white; padding: 2px 15px; border-radius: 5px;">Concluido</p>
+          <% if work_order.status == 1 %> <p class="btn-warning userbtn-index" style="font-size: 14px; padding: 2px 15px; border-radius: 5px;">Aberto</p>
+            <% elsif work_order.status == 2 %> <p class="btn-primary userbtn-index" style="font-size: 14px; padding: 2px 15px; border-radius: 5px;">Em andamento</p>
+            <% else %> <p class="btn-primary userbtn-index" style="font-size: 14px; padding: 2px 15px; border-radius: 5px;">Concluido</p>
           <% end %>
 
 
@@ -53,7 +53,7 @@
           <p class="card-text">Gestão de WO's nunca foi tão eficiente.</p>
           <br>
           <br>
-           <%= link_to "view", work_order_path(work_order), :class => "boton-user" %>
+           <%= link_to "Acessar", work_order_path(work_order), :class => "btn btn-block btn-success" %>
         </div>
       </div>
     <% end %>
