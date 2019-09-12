@@ -58,8 +58,11 @@
 
     <div class="col-4">
       <div class="card p-3">
-        <h1>Projeto - Stats</h1>
-        <%= pie_chart @chart %>
+        <h1>Status Tarefas</h1>
+        <%= pie_chart({
+          "Tasks Concluídas" => @work_order.tasks.where(done: true).count,
+          "Tasks em andamento" => @work_order.tasks.where(done: false).count,
+          }, donut: true, colors: ["#7cc991", "#E67C73"], library: { pieSliceText: 'percentage' } )  %>
       </div>
     </div>
 
@@ -102,7 +105,7 @@
       </div>
       <div class="row">
         <div class="card justify-content-center" id="b">
-          <h1>Status operaciona:</h1>
+          <h1>Status operacional:</h1>
 
         <span>
           <% if @work_order.status == 1 %> <p class="btn btn-primary btn-lg" style="font-size: 12px; padding: 2px 15px; border-radius: 5px;">Aberto</p>
@@ -162,6 +165,26 @@
 
 
     <div class="col-4"> <!--2º Coluna início -->
+
+        <!-- BOX STATUS TASKs -->
+        <div>
+        <h1>Tarefas</h1>
+        <div class="row justify-content-end">
+        <div class="card text-white bg-success m-1" style="width: 120px;">
+          <div class="card-header text-center" style="font-size: 13px;">Concluídos</div>
+          <div class="card-body">
+            <h5 class="card-title text-center" style="font-size: 28px;"><%= @work_order.tasks.where(done: true).count %></h5>
+          </div>
+        </div>
+        <div class="card text-white bg-danger m-1" style="width: 120px;">
+          <div class="card-header text-center" style="font-size: 13px;">Não Realizado</div>
+          <div class="card-body">
+            <h5 class="card-title text-center" style="font-size: 28px;"><%= @work_order.tasks.where(done: false).count %></h5>
+          </div>
+        </div>
+        </div>
+        </div>
+
 
 
       <div class="photo my-5">
