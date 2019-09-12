@@ -22,26 +22,26 @@
   </div>
 </div>
 
-<div class="container shadow-lg p-3 mb-3 bg-white rounded">
-  <div class="card p-5 shadow-lg p-3 mb-3 bg-white rounded">
-  <h3 align="center"> Work Order </h3>
+<div class="container p-3 mb-3 bg-white rounded">
+  <div class="card py-5 px-4 mb-2 bg-white rounded shadow-sm">
+  <h3 align="center"> Ordem de Serviço</h3>
 
       <h4 align="center"><%= @work_order.name %></h4>
 
-          <% if @work_order.priority == 3 %> <p class="btn-danger userbtn" style="font-size: 10px; padding: 2px 15px; border-radius: 5px;">Alta</p>
-            <% elsif @work_order.priority == 2 %> <p class="btn-warning userbtn" style="font-size: 10px; padding: 2px 15px; border-radius: 5px;">Media</p>
-            <% else %> <p class="btn btn-primary" style="font-size: 10px; padding: 2px 15px; border-radius: 5px;">Baixa</p>
+          <% if @work_order.priority == 3 %> <p class="btn-danger userbtn btn-lg" style="font-size: 15px; padding: 2px 15px; border-radius: 5px;">Prioridade:  Alta</p>
+            <% elsif @work_order.priority == 2 %> <p class="btn-warning userbtn btn-lg" style="font-size: 15px; padding: 2px 15px; border-radius: 5px;">Prioridade:  Media</p>
+            <% else %> <p class="btn btn-primary btn-lg" style="font-size: 15px; padding: 2px 15px; border-radius: 5px;">Prioridade:  Baixa</p>
           <% end %>
 
-          <% if @work_order.status == 1 %> <p class="btn-warning userbtn" style="font-size: 10px; padding: 2px 15px; border-radius: 5px;">Aberto</p>
-            <% elsif @work_order.status == 2 %> <p class="btn-primary userbtn" style="font-size: 10px; padding: 2px 15px; border-radius: 5px;">Em andamento</p>
-            <% else %> <p class="btn btn-success" style="font-size: 10px; color: white; padding: 2px 15px; border-radius: 5px;">Concluido</p>
+          <% if @work_order.status == 1 %> <p class="btn-warning userbtn" style="font-size: 15px; padding: 2px 15px; border-radius: 5px;">Status: Aberto</p>
+            <% elsif @work_order.status == 2 %> <p class="btn-primary userbtn" style="font-size: 15px; padding: 2px 15px; border-radius: 5px;">Status: Em andamento</p>
+            <% else %> <p class="btn btn-success" style="font-size: 15px; color: white; padding: 2px 15px; border-radius: 5px;">Status: Concluido</p>
           <% end %>
 
-      <p align="center" style= "font-size: 0.7em; font-weight: normal;"><%= @work_order.description %></p>
+      <p class="card" align="center" style= "font-size: 0.9em; padding: 15px 8px;"><%= @work_order.description %></p>
 </div>
 
-<div class="container shadow-lg p-3 mb-3 bg-white rounded">
+<div class="container card p-3 mb-2 bg-white rounded shadow-sm">
   <h6 align="center"><%= @work_order.address%> </h6>
 
   <div
@@ -56,7 +56,7 @@
 
 <div class="container shadow-lg p-3 mb-3 bg-white rounded">
 
-  <div class="card p-3">
+  <div class="">
 
     <%= simple_form_for @work_order do |f| %>
 
@@ -65,15 +65,17 @@
     <h4>Tarefas:</h4>
     <%= f.simple_fields_for :tasks do |task| %>
     <div class='nested-fields'>
+      <div class="card m-2">
       <div class="row m-2">
         <div class="col-8">
-          <div class="card pl-2 pr-4 py-2">
+          <div class="pl-2 pr-4 py-2">
             <%= task.object.description %>
           </div>
         </div>
         <div class="col-4">
             <%= task.input :done, :as => :boolean %>
         </div>
+      </div>
       </div>
     </div>
 
